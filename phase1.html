@@ -1,0 +1,174 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; padding: 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-phase-badge { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-phase-dot { width: 5px; height: 5px; background: #1D9E75; border-radius: 50%; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 12px; }
+  .ps-timespan { font-size: 14px; color: #888780; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-observe-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 32px; }
+  .ps-observe-card { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; }
+  .ps-observe-q { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 8px; }
+  .ps-observe-detail { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0; }
+  .ps-tracker { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+  .ps-tracker-head { background: #f7f9f7; padding: 14px 20px; border-bottom: 1px solid #e8e6e0; }
+  .ps-tracker-head-title { font-size: 13px; font-weight: 500; color: #1a1a18; margin: 0 0 2px; }
+  .ps-tracker-head-sub { font-size: 12px; color: #888780; margin: 0; }
+  .ps-tracker-row { display: grid; grid-template-columns: 110px 1fr 90px; gap: 0; border-bottom: 1px solid #f0ede8; }
+  .ps-tracker-row:last-child { border-bottom: none; }
+  .ps-tracker-cell { padding: 12px 16px; font-size: 13px; color: #5f5e5a; border-right: 1px solid #f0ede8; }
+  .ps-tracker-cell:last-child { border-right: none; color: #888780; font-style: italic; }
+  .ps-tracker-cell.header { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #888780; font-weight: 500; font-style: normal; background: #fafaf8; }
+  .ps-rule-list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; }
+  .ps-rule-item { display: flex; gap: 14px; align-items: flex-start; }
+  .ps-rule-num { width: 26px; height: 26px; border-radius: 50%; background: #E1F5EE; color: #0F6E56; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .ps-rule-text { font-size: 15px; color: #2c2c2a; line-height: 1.6; }
+  .ps-rule-text strong { font-weight: 500; color: #1a1a18; }
+  .ps-slow-day { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-slow-day-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #BA7517; font-weight: 500; margin: 0 0 8px; }
+  .ps-slow-day-title { font-size: 15px; font-weight: 500; color: #1a1a18; margin: 0 0 10px; }
+  .ps-slow-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+  .ps-slow-list li { font-size: 14px; color: #5f5e5a; display: flex; gap: 8px; line-height: 1.55; }
+  .ps-slow-list li::before { content: ""; width: 4px; height: 4px; background: #EF9F27; border-radius: 50%; flex-shrink: 0; margin-top: 8px; }
+  .ps-next { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; background: #f7f9f7; border-radius: 12px; border: 1px solid #e8e6e0; margin-top: 40px; flex-wrap: wrap; gap: 12px; }
+  .ps-next-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #888780; font-weight: 500; margin: 0 0 4px; }
+  .ps-next-title { font-size: 15px; font-weight: 500; color: #1a1a18; margin: 0; }
+  .ps-next-link { font-size: 13px; color: #0F6E56; border: 1px solid #5DCAA5; background: transparent; padding: 8px 18px; border-radius: 20px; text-decoration: none; white-space: nowrap; }
+  .ps-next-link:hover { background: #E1F5EE; }
+  @media (max-width: 540px) {
+    .ps-observe-grid { grid-template-columns: 1fr; }
+    .ps-tracker-row { grid-template-columns: 90px 1fr; }
+    .ps-tracker-cell:last-child { display: none; }
+    .ps-title { font-size: 26px; }
+  }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-phase-badge"><div class="ps-phase-dot"></div>Phase 1 of 3</div>
+    <h1 class="ps-title">Learn</h1>
+    <p class="ps-timespan">Months 1–6 of your two-year program</p>
+    <p class="ps-sub">Your only job right now is to pay attention. Don't rearrange everything, don't change your prices, don't stress about optimizing. This phase is about gathering real information about how your business works in a physical space.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The core principle of Phase 1</p>
+    <p class="ps-callout-text">Resist the urge to fix things immediately. You can't improve what you don't yet understand. A slow Saturday in month two isn't a failure — it's data. Your goal is to end month six with a clear picture of what's actually happening, not what you assumed would happen.</p>
+  </div>
+
+  <p class="ps-section-label">What to pay attention to</p>
+  <div class="ps-observe-grid">
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">What sells — and what doesn't?</p>
+      <p class="ps-observe-detail">Track which items move each weekend. Are your bestsellers online the same as in-person? You'll often be surprised — people buy differently when they can touch things.</p>
+    </div>
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">Who is actually stopping?</p>
+      <p class="ps-observe-detail">Note roughly who your customers are. Are they regulars walking by, or people who sought you out? Are they the same audience as your online customers?</p>
+    </div>
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">What do people ask?</p>
+      <p class="ps-observe-detail">Every repeated question is information. If five people ask the same thing, that's either a gap in your signage, a pricing opportunity, or an untapped product idea.</p>
+    </div>
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">When is traffic high vs. slow?</p>
+      <p class="ps-observe-detail">Track roughly how busy each day and each hour is. Thursday at 2pm and Sunday at noon might be completely different markets. Understanding when your customers show up is foundational.</p>
+    </div>
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">What makes someone put something down?</p>
+      <p class="ps-observe-detail">Watch what people pick up and then set back down without buying. Is it price? Uncertainty about the product? Something about the display? This is harder to track online.</p>
+    </div>
+    <div class="ps-observe-card">
+      <p class="ps-observe-q">How do people find you?</p>
+      <p class="ps-observe-detail">Ask! A simple "did you find us online or just walk by?" gives you information about whether your social posts are actually driving traffic or whether you're relying on foot traffic alone.</p>
+    </div>
+  </div>
+
+  <p class="ps-section-label">A simple weekend tracker</p>
+  <p style="font-size:14px;color:#5f5e5a;line-height:1.65;margin:0 0 14px;">You don't need fancy software. A shared Google Sheet or even a notebook works fine. The goal is to create a habit of noting a few things after each weekend — not to build a data dashboard.</p>
+  <div class="ps-tracker">
+    <div class="ps-tracker-head">
+      <p class="ps-tracker-head-title">Weekend log — what to capture</p>
+      <p class="ps-tracker-head-sub">Takes about 5 minutes after you close up</p>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell header">What</div>
+      <div class="ps-tracker-cell header">How to track it</div>
+      <div class="ps-tracker-cell header">Why it matters</div>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell">Total sales</div>
+      <div class="ps-tracker-cell">Dollar amount per day</div>
+      <div class="ps-tracker-cell">Spot patterns over months</div>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell">Top 3 items sold</div>
+      <div class="ps-tracker-cell">Just write them down</div>
+      <div class="ps-tracker-cell">Informs Phase 2 product mix</div>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell">Busiest hour</div>
+      <div class="ps-tracker-cell">Rough estimate is fine</div>
+      <div class="ps-tracker-cell">Helps you plan when to be "on"</div>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell">One observation</div>
+      <div class="ps-tracker-cell">One sentence — anything notable</div>
+      <div class="ps-tracker-cell">Builds a real record over time</div>
+    </div>
+    <div class="ps-tracker-row">
+      <div class="ps-tracker-cell">Weather / notes</div>
+      <div class="ps-tracker-cell">Rain, event nearby, etc.</div>
+      <div class="ps-tracker-cell">Explains outlier days later</div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Three rules for Phase 1</p>
+  <ul class="ps-rule-list">
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">1</div>
+      <p class="ps-rule-text"><strong>Don't change two things at once.</strong> If you rearrange your display and lower your prices on the same weekend, you won't know which change caused any difference you see. In Phase 2, you'll test deliberately. For now, keep things as consistent as possible so your observations are clean.</p>
+    </li>
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">2</div>
+      <p class="ps-rule-text"><strong>Talk to customers — especially the ones who don't buy.</strong> A polite "thanks for stopping by, what brings you to the market today?" is all you need. The people who browse and leave without purchasing are often more informative than those who buy.</p>
+    </li>
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">3</div>
+      <p class="ps-rule-text"><strong>Give yourself permission for slow days.</strong> A quiet Thursday doesn't mean the program isn't working — it might mean Thursday is not your day. That's useful to know. Don't spiral. Write it down and keep going.</p>
+    </li>
+  </ul>
+
+  <div class="ps-slow-day">
+    <p class="ps-slow-day-label">When it's slow</p>
+    <p class="ps-slow-day-title">What to do with quiet time instead of feeling defeated</p>
+    <ul class="ps-slow-list">
+      <li>Stand outside your space and look at it the way a stranger walking by would. What draws the eye? What's confusing?</li>
+      <li>Write down three questions customers have asked this month and think about whether your display or signage answers them.</li>
+      <li>Chat with neighboring vendors. They notice things about your space that you can't see from inside it.</li>
+      <li>Post one behind-the-scenes photo or story to your social accounts. Slow in-person days are good content days.</li>
+      <li>Review your weekend log. Are any patterns starting to emerge, even after just a few weeks?</li>
+    </ul>
+  </div>
+
+  <div class="ps-next">
+    <div>
+      <p class="ps-next-label">Up next</p>
+      <p class="ps-next-title">Phase 2: Adjust — using what you learned to make deliberate changes</p>
+    </div>
+    <a class="ps-next-link" href="phase2.html">Read Phase 2 →</a>
+  </div>
+</div>

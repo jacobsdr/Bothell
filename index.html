@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Shops on Main — Vendor Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f9f7; color: #1a1a18; min-height: 100vh; }
+  nav { background: #0F6E56; padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-brand { font-family: 'Lora', serif; font-size: 16px; font-weight: 600; color: #fff; text-decoration: none; }
+  .nav-city { font-size: 12px; color: rgba(255,255,255,0.55); }
+  main { max-width: 800px; margin: 0 auto; padding: 48px 24px 80px; }
+  .hero { margin-bottom: 48px; }
+  .eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888780; font-weight: 500; margin-bottom: 12px; }
+  h1 { font-family: 'Lora', serif; font-size: 36px; font-weight: 600; line-height: 1.2; margin-bottom: 14px; }
+  h1 span { color: #1D9E75; }
+  .hero-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 520px; }
+  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin-bottom: 14px; }
+  .card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px; }
+  .card-grid.two { grid-template-columns: repeat(2, 1fr); }
+  .card { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px; text-decoration: none; color: inherit; display: block; transition: border-color 0.15s, box-shadow 0.15s; }
+  .card:hover { border-color: #1D9E75; box-shadow: 0 2px 10px rgba(29,158,117,0.1); }
+  .card-phase { font-size: 11px; font-weight: 500; color: #1D9E75; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+  .card-title { font-size: 16px; font-weight: 500; color: #1a1a18; margin-bottom: 5px; }
+  .card-time { font-size: 12px; color: #888780; margin-bottom: 10px; }
+  .card-desc { font-size: 13px; color: #5f5e5a; line-height: 1.55; }
+  .card-tag { display: inline-block; background: #E1F5EE; color: #085041; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+  .divider { height: 1px; background: #e8e6e0; margin: 40px 0; }
+  footer { background: #0F6E56; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; }
+  footer p { font-size: 13px; color: rgba(255,255,255,0.6); }
+  footer strong { color: #fff; font-weight: 500; }
+  footer a { font-size: 13px; color: #9FE1CB; text-decoration: none; }
+  @media (max-width: 560px) {
+    .card-grid, .card-grid.two { grid-template-columns: 1fr; }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">Pop Shops on Main</a>
+  <span class="nav-city">City of Bothell, WA</span>
+</nav>
+
+<main>
+  <div class="hero">
+    <p class="eyebrow">Vendor onboarding guide</p>
+    <h1>Welcome to your<br><span>two years.</span></h1>
+    <p class="hero-sub">This guide is here to help you hit the ground running, learn what works for your business, and leave with real answers — whatever direction those answers point.</p>
+  </div>
+
+  <p class="section-label">Your two-year arc</p>
+  <div class="card-grid">
+    <a class="card" href="phase1.html">
+      <p class="card-phase">Phase 1</p>
+      <p class="card-title">Learn</p>
+      <p class="card-time">Months 1–6</p>
+      <p class="card-desc">Observe everything. What sells? Who stops? Don't optimize yet — just notice.</p>
+    </a>
+    <a class="card" href="phase2.html">
+      <p class="card-phase">Phase 2</p>
+      <p class="card-title">Adjust</p>
+      <p class="card-time">Months 7–18</p>
+      <p class="card-desc">Use what you learned. Change one thing at a time so you know what worked.</p>
+    </a>
+    <a class="card" href="phase3.html">
+      <p class="card-phase">Phase 3</p>
+      <p class="card-title">Decide</p>
+      <p class="card-time">Months 19–24</p>
+      <p class="card-desc">You have real data now. Make an informed decision about your next chapter.</p>
+    </a>
+  </div>
+
+  <div class="divider"></div>
+
+  <p class="section-label">Guides &amp; resources</p>
+  <div class="card-grid two">
+    <a class="card" href="space.html">
+      <span class="card-tag">Setting up</span>
+      <p class="card-title">Setting up your space</p>
+      <p class="card-desc">Visual merchandising, display layout, and making your space feel intentional — not improvised.</p>
+    </a>
+    <a class="card" href="bridge.html">
+      <span class="card-tag">Marketing</span>
+      <p class="card-title">Bridging online to in-person</p>
+      <p class="card-desc">Turn your existing followers into in-person visitors — and use the pop-up to strengthen your online brand.</p>
+    </a>
+    <a class="card" href="sell.html">
+      <span class="card-tag">Selling</span>
+      <p class="card-title">How to actually sell</p>
+      <p class="card-desc">Customer engagement, reading buying signals, and the hosting mindset that makes in-person selling feel natural.</p>
+    </a>
+    <a class="card" href="money.html" style="opacity:0.5; pointer-events:none;">
+      <span class="card-tag">Finances</span>
+      <p class="card-title">Money basics</p>
+      <p class="card-desc">Coming soon — simple tracking, WA licensing, sales tax, and keeping business money separate.</p>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p><strong>Pop Shops on Main</strong> · City of Bothell, WA · Prototype v1</p>
+  <a href="https://www.bothellwa.gov/1945/Pop-Shops-on-Main">bothellwa.gov ↗</a>
+</footer>
+
+</body>
+</html>

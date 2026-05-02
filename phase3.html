@@ -1,0 +1,146 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-phase-badge { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-phase-dot { width: 5px; height: 5px; background: #1D9E75; border-radius: 50%; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 12px; }
+  .ps-timespan { font-size: 14px; color: #888780; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-questions { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-question { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; }
+  .ps-question-q { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 8px; }
+  .ps-question-hint { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0; }
+  .ps-offramps { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-bottom: 32px; }
+  .ps-offramp { border-radius: 12px; padding: 22px 22px; border: 1px solid #e8e6e0; }
+  .ps-offramp.green { border-color: #9FE1CB; }
+  .ps-offramp.blue { border-color: #B5D4F4; }
+  .ps-offramp-tag { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin: 0 0 8px; }
+  .ps-offramp-tag.green { color: #0F6E56; }
+  .ps-offramp-tag.blue { color: #185FA5; }
+  .ps-offramp-title { font-family: 'Lora', serif; font-size: 18px; font-weight: 600; color: #1a1a18; margin: 0 0 12px; }
+  .ps-offramp-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+  .ps-offramp-list li { font-size: 13px; color: #5f5e5a; display: flex; gap: 8px; line-height: 1.55; }
+  .ps-offramp-list li::before { content: "→"; color: #9FE1CB; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  .ps-offramp.blue .ps-offramp-list li::before { color: #85B7EB; }
+  .ps-resources { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .ps-resource { background: #fff; border: 1px solid #e8e6e0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: inherit; }
+  .ps-resource:hover { border-color: #1D9E75; }
+  .ps-resource-info { flex: 1; }
+  .ps-resource-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 3px; }
+  .ps-resource-desc { font-size: 12px; color: #888780; margin: 0; }
+  .ps-resource-link { font-size: 12px; color: #0F6E56; white-space: nowrap; }
+  .ps-closing { background: #E1F5EE; border-radius: 12px; padding: 24px 26px; margin-top: 40px; }
+  .ps-closing-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #085041; margin: 0 0 10px; }
+  .ps-closing-text { font-size: 15px; color: #0F6E56; line-height: 1.7; margin: 0; }
+  @media (max-width: 540px) {
+    .ps-offramps { grid-template-columns: 1fr; }
+    .ps-title { font-size: 26px; }
+  }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-phase-badge"><div class="ps-phase-dot"></div>Phase 3 of 3</div>
+    <h1 class="ps-title">Decide</h1>
+    <p class="ps-timespan">Months 19–24 of your two-year program</p>
+    <p class="ps-sub">You've spent nearly two years running a real experiment. Now it's time to look honestly at what you've learned and decide what comes next — with evidence, not guesswork.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The core principle of Phase 3</p>
+    <p class="ps-callout-text">There is no wrong answer here. The point of this entire program was to help you find out whether physical retail fits your business. If the answer is yes — great, let's help you take the next step. If the answer is no — that's equally valuable. You saved yourself years of expensive leases and found out on the city's dime instead of your own.</p>
+  </div>
+
+  <p class="ps-section-label">Five honest questions to answer before you decide</p>
+  <div class="ps-questions">
+    <div class="ps-question">
+      <p class="ps-question-q">Does the revenue justify the time?</p>
+      <p class="ps-question-hint">Add up what you've made across your weekends. Subtract the cost of any materials, fees, or time away from your online business. Is the net positive enough to build on — and would a permanent space make that math better or worse?</p>
+    </div>
+    <div class="ps-question">
+      <p class="ps-question-q">Did you find a customer base you couldn't reach online?</p>
+      <p class="ps-question-hint">Some businesses discover a completely different type of customer in person — often older, or more local, or more impulse-driven than their online audience. If physical retail unlocked a new market, that's a strong signal.</p>
+    </div>
+    <div class="ps-question">
+      <p class="ps-question-q">Did you enjoy it?</p>
+      <p class="ps-question-hint">Don't underestimate this. Running a permanent physical store is a lifestyle choice, not just a business decision. Four days a week of customer interaction is very different from running an Etsy shop in your spare time. Be honest about whether you actually liked it.</p>
+    </div>
+    <div class="ps-question">
+      <p class="ps-question-q">Did your online business benefit or suffer?</p>
+      <p class="ps-question-hint">Some vendors find the pop-up drives more online sales through word of mouth and social content. Others find the time commitment pulled them away from their core business. Which was true for you?</p>
+    </div>
+    <div class="ps-question">
+      <p class="ps-question-q">What would you need to change to make permanent retail work?</p>
+      <p class="ps-question-hint">If your answer to the first four questions is "mostly yes but..." — what is the "but"? More foot traffic? A different location? Lower overhead? A partner to share shifts? Sometimes the issue is solvable, which means the answer might still be yes.</p>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Your two paths forward</p>
+  <div class="ps-offramps">
+    <div class="ps-offramp green">
+      <p class="ps-offramp-tag green">Physical retail worked</p>
+      <p class="ps-offramp-title">Ready to grow</p>
+      <ul class="ps-offramp-list">
+        <li>Contact the city — they can serve as a reference for landlords in Bothell</li>
+        <li>Connect with the Small Business Development Center (SBDC) for free lease negotiation coaching</li>
+        <li>Explore Bothell's Main Street commercial corridor for available spaces</li>
+        <li>Use your two years of sales data as your business case — it's more credible than projections</li>
+        <li>Ask Mercy Corps Northwest about small business loans for build-out costs</li>
+      </ul>
+    </div>
+    <div class="ps-offramp blue">
+      <p class="ps-offramp-tag blue">Online is the right fit</p>
+      <p class="ps-offramp-title">Taking what you learned</p>
+      <ul class="ps-offramp-list">
+        <li>Your bestselling in-person items deserve more prominence online — feature them</li>
+        <li>The customer questions you heard in person are your best FAQ and product description copy</li>
+        <li>The social content you created for your pop-up can keep working for your online brand</li>
+        <li>Consider using weekend markets as a lower-commitment physical presence going forward</li>
+        <li>You now know your customer in a way that most online-only sellers never do — use that</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Resources for what comes next</p>
+  <div class="ps-resources">
+    <a class="ps-resource" href="https://www.bothellwa.gov/1945/Pop-Shops-on-Main">
+      <div class="ps-resource-info">
+        <p class="ps-resource-title">City of Bothell — Business Resources</p>
+        <p class="ps-resource-desc">City programs, permits, and contacts for business owners in Bothell</p>
+      </div>
+      <span class="ps-resource-link">Visit →</span>
+    </a>
+    <a class="ps-resource" href="https://wsbdc.org">
+      <div class="ps-resource-info">
+        <p class="ps-resource-title">Washington Small Business Development Center</p>
+        <p class="ps-resource-desc">Free one-on-one advising for lease negotiations, business planning, and financing</p>
+      </div>
+      <span class="ps-resource-link">Visit →</span>
+    </a>
+    <a class="ps-resource" href="https://mercycorpsnw.org">
+      <div class="ps-resource-info">
+        <p class="ps-resource-title">Mercy Corps Northwest</p>
+        <p class="ps-resource-desc">Microloans and financial coaching for small and emerging businesses</p>
+      </div>
+      <span class="ps-resource-link">Visit →</span>
+    </a>
+  </div>
+
+  <div class="ps-closing">
+    <p class="ps-closing-title">You ran a real experiment.</p>
+    <p class="ps-closing-text">Whatever you decide, you did something most aspiring business owners never do — you tested your idea in the real world with real customers, real money, and real feedback. That makes your next decision, whatever it is, an informed one. The city is proud to have been part of that.</p>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-tag { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-tip-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-tip { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; }
+  .ps-tip-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 6px; }
+  .ps-tip-text { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0; }
+  .ps-tip-pro { font-size: 12px; color: #0F6E56; background: #E1F5EE; border-radius: 6px; padding: 6px 10px; margin-top: 10px; display: inline-block; }
+  .ps-dos-donts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; }
+  .ps-col-head { font-size: 12px; font-weight: 500; padding: 10px 16px; border-radius: 8px 8px 0 0; text-align: center; }
+  .ps-col-head.do { background: #E1F5EE; color: #085041; }
+  .ps-col-head.dont { background: #FCEBEB; color: #A32D2D; }
+  .ps-col-body { border: 1px solid #e8e6e0; border-radius: 0 0 10px 10px; overflow: hidden; }
+  .ps-col-item { padding: 11px 14px; font-size: 13px; color: #5f5e5a; border-bottom: 1px solid #f0ede8; line-height: 1.5; display: flex; gap: 8px; }
+  .ps-col-item:last-child { border-bottom: none; }
+  .ps-col-item::before { flex-shrink: 0; margin-top: 2px; font-size: 11px; }
+  .ps-col-item.do::before { content: "✓"; color: #1D9E75; font-weight: 600; }
+  .ps-col-item.dont::before { content: "✕"; color: #E24B4A; font-weight: 600; }
+  .ps-refresh { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-refresh-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 10px; }
+  .ps-refresh-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+  .ps-refresh-list li { font-size: 13px; color: #5f5e5a; line-height: 1.55; display: flex; gap: 8px; }
+  .ps-refresh-list li::before { content: "→"; color: #9FE1CB; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  @media (max-width: 540px) {
+    .ps-dos-donts { grid-template-columns: 1fr; }
+    .ps-title { font-size: 26px; }
+  }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-tag">Setting up your space</div>
+    <h1 class="ps-title">How to make your pop-up feel intentional — not improvised</h1>
+    <p class="ps-sub">Most vendors know their product well. Fewer know how to display it. Small decisions about layout, height, and signage have an outsized effect on whether strangers stop, walk in, and buy.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The 3-second rule</p>
+    <p class="ps-callout-text">A person walking past your space decides whether to stop in about three seconds. In that window they see your overall visual impression before they see any individual product. Ask yourself: if I saw my space from 15 feet away while walking, what would make me stop? That answer is your display priority.</p>
+  </div>
+
+  <p class="ps-section-label">Six display principles that actually work</p>
+  <div class="ps-tip-list">
+    <div class="ps-tip">
+      <p class="ps-tip-title">Create one clear focal point</p>
+      <p class="ps-tip-text">Pick your most visual, most appealing, or best-selling product and give it a dedicated "hero" spot — elevated, centered, well-lit if possible. Everything else should support it, not compete with it. A space that tries to feature everything equally ends up featuring nothing.</p>
+      <span class="ps-tip-pro">Try: Put your hero product at eye level near the entrance, with a clear price sign.</span>
+    </div>
+    <div class="ps-tip">
+      <p class="ps-tip-title">Use height variation</p>
+      <p class="ps-tip-text">A flat table of products is hard to read at a glance. Varying height — using risers, crates, or shelving — creates visual interest and lets people see more products without having to walk all the way in. It also signals that your setup is intentional, not just stuff on a folding table.</p>
+      <span class="ps-tip-pro">Try: A simple wooden crate or a stack of books under a cloth riser costs almost nothing and changes the look immediately.</span>
+    </div>
+    <div class="ps-tip">
+      <p class="ps-tip-title">Price everything visibly</p>
+      <p class="ps-tip-text">Unpriced items kill sales. Many customers — especially introverts — will not ask for a price. They will simply put the item down and walk away. A clear price tag or sign removes that barrier entirely. Don't make people ask for information they need to make a decision.</p>
+      <span class="ps-tip-pro">Try: A small typed label near each item, plus one larger sign showing your price range (e.g. "Items from $12–$45") for people browsing from a distance.</span>
+    </div>
+    <div class="ps-tip">
+      <p class="ps-tip-title">Keep your story visible</p>
+      <p class="ps-tip-text">One of the biggest advantages of a physical space over an online listing is that you — the maker — are right there. A small sign that says who you are, what you make, and why, gives customers context that makes them feel connected to what they're buying. People buy stories as much as products.</p>
+      <span class="ps-tip-pro">Try: A simple A5 card with your name, what you make, and one sentence about why you started. It doesn't need to be fancy.</span>
+    </div>
+    <div class="ps-tip">
+      <p class="ps-tip-title">Leave room to breathe</p>
+      <p class="ps-tip-text">Overcrowded displays feel overwhelming and cheap, even if the products are high quality. Give each item space. Counterintuitively, showing fewer items often increases perceived value and makes each one easier to consider. If you run low on inventory, don't spread out what's left — consolidate and tighten.</p>
+      <span class="ps-tip-pro">Try: Remove one-third of what you have on display and see if the space feels more considered and easier to browse.</span>
+    </div>
+    <div class="ps-tip">
+      <p class="ps-tip-title">Make the entrance inviting, not blocking</p>
+      <p class="ps-tip-text">Your most tempting instinct will be to put a table right at the entrance to catch people. Resist it. A blocked entrance makes people feel like they're committing to going "inside" — which feels like pressure. An open entrance that draws the eye deeper into the space invites rather than intercepts.</p>
+      <span class="ps-tip-pro">Try: Frame the entrance with something visually interesting on each side, with the main display visible but accessible deeper in the space.</span>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Quick reference — display dos and don'ts</p>
+  <div class="ps-dos-donts">
+    <div>
+      <div class="ps-col-head do">Do</div>
+      <div class="ps-col-body">
+        <div class="ps-col-item do">Price every item clearly</div>
+        <div class="ps-col-item do">Vary height across your display</div>
+        <div class="ps-col-item do">Feature one hero product prominently</div>
+        <div class="ps-col-item do">Tell your story with a visible sign</div>
+        <div class="ps-col-item do">Keep the entrance open and welcoming</div>
+        <div class="ps-col-item do">Refresh the display monthly — regulars notice</div>
+      </div>
+    </div>
+    <div>
+      <div class="ps-col-head dont">Don't</div>
+      <div class="ps-col-body">
+        <div class="ps-col-item dont">Leave items unpriced</div>
+        <div class="ps-col-item dont">Lay everything flat on one table</div>
+        <div class="ps-col-item dont">Block the entrance with a table</div>
+        <div class="ps-col-item dont">Cram every product into the space</div>
+        <div class="ps-col-item dont">Use handwritten-only signage for prices</div>
+        <div class="ps-col-item dont">Keep the same layout for 6 months straight</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Keeping it fresh for repeat visitors</p>
+  <div class="ps-refresh">
+    <p class="ps-refresh-title">Simple ways to refresh your space without a full overhaul</p>
+    <ul class="ps-refresh-list">
+      <li>Rotate which products are in the focal point position each month</li>
+      <li>Swap out a seasonal accent — a small plant, a color of cloth, a seasonal item — to signal something new</li>
+      <li>Feature one "this month's pick" with a small handwritten card explaining why you love it</li>
+      <li>Move your bestsellers to a different position — returning customers will notice and explore more</li>
+      <li>Introduce one new product every 6–8 weeks, even a small one, to give regulars a reason to stop again</li>
+    </ul>
+  </div>
+</div>

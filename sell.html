@@ -1,0 +1,135 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-tag { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #e8e6e0; border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+  .ps-compare-col { }
+  .ps-compare-head { padding: 12px 16px; font-size: 12px; font-weight: 500; text-align: center; border-bottom: 1px solid #e8e6e0; }
+  .ps-compare-head.bad { background: #FCEBEB; color: #A32D2D; }
+  .ps-compare-head.good { background: #E1F5EE; color: #085041; border-left: 1px solid #e8e6e0; }
+  .ps-compare-item { padding: 12px 16px; font-size: 13px; color: #5f5e5a; border-bottom: 1px solid #f0ede8; line-height: 1.5; }
+  .ps-compare-item:last-child { border-bottom: none; }
+  .ps-compare-item.right { border-left: 1px solid #e8e6e0; }
+  .ps-scenario-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-scenario { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; }
+  .ps-scenario-situation { font-size: 12px; text-transform: uppercase; letter-spacing: 0.07em; color: #888780; font-weight: 500; margin: 0 0 6px; }
+  .ps-scenario-say { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 8px; font-style: italic; }
+  .ps-scenario-why { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0; }
+  .ps-pitfall-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .ps-pitfall { background: #fafaf8; border-radius: 10px; padding: 14px 18px; border: 1px solid #e8e6e0; }
+  .ps-pitfall-label { font-size: 12px; color: #A32D2D; font-weight: 500; margin: 0 0 4px; }
+  .ps-pitfall-text { font-size: 13px; color: #5f5e5a; line-height: 1.55; margin: 0; }
+  .ps-30sec { background: #E1F5EE; border-radius: 12px; padding: 22px 24px; margin-bottom: 32px; }
+  .ps-30sec-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 8px; }
+  .ps-30sec-title { font-size: 15px; font-weight: 500; color: #085041; margin: 0 0 10px; }
+  .ps-30sec-template { font-size: 14px; color: #0F6E56; line-height: 1.7; margin: 0 0 10px; font-style: italic; }
+  .ps-30sec-note { font-size: 12px; color: #0F6E56; margin: 0; opacity: 0.8; }
+  @media (max-width: 540px) {
+    .ps-compare { grid-template-columns: 1fr; }
+    .ps-compare-head.good, .ps-compare-item.right { border-left: none; border-top: 1px solid #e8e6e0; }
+    .ps-title { font-size: 26px; }
+  }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-tag">How to actually sell</div>
+    <h1 class="ps-title">Selling in person feels different.<br>Here's how to make it natural.</h1>
+    <p class="ps-sub">Many online sellers feel uncomfortable in person — selling face-to-face can feel pushy or awkward. This section reframes it: your job isn't to close people. It's to be a good host.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The hosting mindset</p>
+    <p class="ps-callout-text">Think of every person who walks in as a guest, not a target. Your goal is to make them feel welcome, curious, and comfortable — not to convince them to buy something they don't want. People who feel relaxed and respected buy more than people who feel pressured. The sale is the byproduct of a good experience, not the point of it.</p>
+  </div>
+
+  <p class="ps-section-label">How to greet people</p>
+  <div class="ps-compare">
+    <div class="ps-compare-col">
+      <div class="ps-compare-head bad">Avoid these</div>
+      <div class="ps-compare-item">"Can I help you?" — puts them on the spot, easy to say no to</div>
+      <div class="ps-compare-item">Silence — makes browsing feel observed and awkward</div>
+      <div class="ps-compare-item">"Let me know if you have questions" — then nothing — leaves people adrift</div>
+      <div class="ps-compare-item">Launching into a full product pitch the moment someone walks in</div>
+    </div>
+    <div class="ps-compare-col">
+      <div class="ps-compare-head good">Try these instead</div>
+      <div class="ps-compare-item right">"Hi, welcome in!" — warm, zero pressure, no response required</div>
+      <div class="ps-compare-item right">"These are all handmade — feel free to pick anything up" — invites touching</div>
+      <div class="ps-compare-item right">"That one's a popular pick — want to know the story behind it?" — opens a conversation naturally</div>
+      <div class="ps-compare-item right">Let them browse for 30 seconds, then offer one piece of context about something they're near</div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Common situations — what to say</p>
+  <div class="ps-scenario-list">
+    <div class="ps-scenario">
+      <p class="ps-scenario-situation">When someone picks something up and examines it</p>
+      <p class="ps-scenario-say">"That one's [material/origin/story]. A lot of people use it for [use case]."</p>
+      <p class="ps-scenario-why">You're adding information, not pressure. You're telling them something they couldn't learn from looking at it — which is the entire advantage of being in-person over online.</p>
+    </div>
+    <div class="ps-scenario">
+      <p class="ps-scenario-situation">When someone asks "how much is this?" and it's already labeled</p>
+      <p class="ps-scenario-say">"It's [price]. And it [one specific value point — lasts long, is handmade, makes a great gift for X]."</p>
+      <p class="ps-scenario-why">They saw the price label. They're asking because they're considering it and want validation. Give them one concrete reason to feel good about the price.</p>
+    </div>
+    <div class="ps-scenario">
+      <p class="ps-scenario-situation">When someone says "I'll think about it"</p>
+      <p class="ps-scenario-say">"Of course — and if you want, I'm here all weekend, so no rush at all."</p>
+      <p class="ps-scenario-why">Don't chase. This response removes pressure and keeps the door open. Sometimes people leave and come back ten minutes later with a friend. Pressure would have closed that door.</p>
+    </div>
+    <div class="ps-scenario">
+      <p class="ps-scenario-situation">When someone asks if you have an online shop</p>
+      <p class="ps-scenario-say">"Yes — it's [handle/URL]. You can also follow me [on platform] to see new arrivals and when I'm here next."</p>
+      <p class="ps-scenario-why">Every in-person visitor who becomes an online follower is a relationship that outlasts the pop-up. Don't treat it as a fallback — treat it as an upgrade to a longer-term connection.</p>
+    </div>
+    <div class="ps-scenario">
+      <p class="ps-scenario-situation">When it's slow and you're tempted to disengage</p>
+      <p class="ps-scenario-say">[Stay visibly present but occupied — straighten products, sketch, work on something handmade if applicable]</p>
+      <p class="ps-scenario-why">A vendor who looks bored or buried in their phone is harder to approach. Someone who's quietly doing something feels interruptible — which paradoxically makes people more likely to come in and start a conversation.</p>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Your 30-second story</p>
+  <div class="ps-30sec">
+    <p class="ps-30sec-label">One thing worth preparing in advance</p>
+    <p class="ps-30sec-title">Be ready to answer "so what do you make / sell?"</p>
+    <p class="ps-30sec-template">"I make [what it is] — I started because [one genuine sentence about why]. Everything here is [handmade / small batch / locally sourced / etc.]. That one there is [your current favorite or bestseller]."</p>
+    <p class="ps-30sec-note">Write your version of this and practice it out loud a few times before your first weekend. It sounds simple but most people stumble the first few times someone asks. Having a natural, rehearsed answer is the difference between a confident conversation and an awkward one.</p>
+  </div>
+
+  <p class="ps-section-label">Common pitfalls for first-time in-person sellers</p>
+  <div class="ps-pitfall-list">
+    <div class="ps-pitfall">
+      <p class="ps-pitfall-label">Pitfall: Apologizing for your prices</p>
+      <p class="ps-pitfall-text">If you say "it's $45... I know that's a lot" you've undercut your own product before the customer has decided anything. State prices confidently. If a price needs explaining, explain the value — not the cost.</p>
+    </div>
+    <div class="ps-pitfall">
+      <p class="ps-pitfall-label">Pitfall: Hovering</p>
+      <p class="ps-pitfall-text">Following a customer around or watching them closely makes them uncomfortable and shortens their visit. Greet them, offer one piece of context, then give them space. Be available, not present at all times.</p>
+    </div>
+    <div class="ps-pitfall">
+      <p class="ps-pitfall-label">Pitfall: Being on your phone when someone walks in</p>
+      <p class="ps-pitfall-text">You have about two seconds to acknowledge a new visitor. If you're mid-scroll when someone enters, the tone of the whole interaction starts off slightly wrong. Keep your phone face-down or out of sight during open hours.</p>
+    </div>
+    <div class="ps-pitfall">
+      <p class="ps-pitfall-label">Pitfall: Treating browsers as a waste of time</p>
+      <p class="ps-pitfall-text">People who browse without buying are still forming an impression of you and your business. They might follow you on Instagram, mention you to a friend, or come back next month with someone else. Treat everyone like they matter — because they do.</p>
+    </div>
+  </div>
+</div>

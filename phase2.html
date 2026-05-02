@@ -1,0 +1,139 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-phase-badge { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-phase-dot { width: 5px; height: 5px; background: #1D9E75; border-radius: 50%; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 12px; }
+  .ps-timespan { font-size: 14px; color: #888780; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-test-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-test-card { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; display: flex; gap: 16px; align-items: flex-start; }
+  .ps-test-icon { width: 36px; height: 36px; border-radius: 9px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .ps-test-icon svg { width: 17px; height: 17px; stroke: #0F6E56; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-test-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 4px; }
+  .ps-test-desc { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0 0 6px; }
+  .ps-test-example { font-size: 12px; color: #888780; font-style: italic; margin: 0; }
+  .ps-rule-list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; }
+  .ps-rule-item { display: flex; gap: 14px; align-items: flex-start; }
+  .ps-rule-num { width: 26px; height: 26px; border-radius: 50%; background: #E1F5EE; color: #0F6E56; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .ps-rule-text { font-size: 15px; color: #2c2c2a; line-height: 1.6; }
+  .ps-rule-text strong { font-weight: 500; color: #1a1a18; }
+  .ps-warning { background: #FAEEDA; border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; }
+  .ps-warning-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #633806; font-weight: 500; margin: 0 0 6px; }
+  .ps-warning-text { font-size: 14px; color: #412402; line-height: 1.6; margin: 0; }
+  .ps-review-box { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-review-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 12px; }
+  .ps-review-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .ps-review-list li { font-size: 13px; color: #5f5e5a; display: flex; gap: 10px; line-height: 1.55; }
+  .ps-review-list li::before { content: ""; width: 16px; height: 16px; border: 1.5px solid #9FE1CB; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
+  .ps-next { display: flex; align-items: center; justify-content: space-between; padding: 20px 22px; background: #f7f9f7; border-radius: 12px; border: 1px solid #e8e6e0; margin-top: 40px; flex-wrap: wrap; gap: 12px; }
+  .ps-next-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #888780; font-weight: 500; margin: 0 0 4px; }
+  .ps-next-title { font-size: 15px; font-weight: 500; color: #1a1a18; margin: 0; }
+  .ps-next-link { font-size: 13px; color: #0F6E56; border: 1px solid #5DCAA5; background: transparent; padding: 8px 18px; border-radius: 20px; text-decoration: none; white-space: nowrap; }
+  .ps-next-link:hover { background: #E1F5EE; }
+  @media (max-width: 540px) { .ps-title { font-size: 26px; } }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-phase-badge"><div class="ps-phase-dot"></div>Phase 2 of 3</div>
+    <h1 class="ps-title">Adjust</h1>
+    <p class="ps-timespan">Months 7–18 of your two-year program</p>
+    <p class="ps-sub">You've spent six months watching. Now it's time to act on what you noticed — but carefully. This phase is about making deliberate, one-at-a-time changes so you actually know what's working.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The core principle of Phase 2</p>
+    <p class="ps-callout-text">Change one thing at a time. This sounds obvious but is easy to violate when you're excited. If you change your display layout, your pricing, and your product mix in the same month, you'll see different results but have no idea why. Patience here pays off with real answers.</p>
+  </div>
+
+  <p class="ps-section-label">Four areas worth adjusting — in this order</p>
+  <div class="ps-test-cards">
+    <div class="ps-test-card">
+      <div class="ps-test-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+      <div>
+        <p class="ps-test-title">1. Display layout</p>
+        <p class="ps-test-desc">This is the lowest-risk adjustment and often the highest-impact. How your space is arranged affects whether people stop, walk in, and browse. Start here before touching anything else.</p>
+        <p class="ps-test-example">Try: Move your bestseller to eye level at the entrance. See if the number of people who stop changes over two weekends.</p>
+      </div>
+    </div>
+    <div class="ps-test-card">
+      <div class="ps-test-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div>
+        <p class="ps-test-title">2. Pricing on specific items</p>
+        <p class="ps-test-desc">Don't reprice everything at once. Pick one item that people frequently pick up but don't buy, and test a small price adjustment. Track whether it changes conversion.</p>
+        <p class="ps-test-example">Try: If people always ask "how much is this?" about one item, your price sign may be unclear — or the price itself may be the barrier. Test both separately.</p>
+      </div>
+    </div>
+    <div class="ps-test-card">
+      <div class="ps-test-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+      <div>
+        <p class="ps-test-title">3. Product mix</p>
+        <p class="ps-test-desc">By now your Phase 1 log tells you what sells and what doesn't. Quietly retire slow-moving items and bring in something new — ideally something customers have asked about.</p>
+        <p class="ps-test-example">Try: If three people asked in month four whether you carry a specific variation of your product, test it in month eight. You already have demand data.</p>
+      </div>
+    </div>
+    <div class="ps-test-card">
+      <div class="ps-test-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div>
+        <p class="ps-test-title">4. Marketing and promotion</p>
+        <p class="ps-test-desc">Test whether specific social posts drive more foot traffic. Run one promotion and measure whether it changes your weekend sales. Don't run promotions constantly — they lose effectiveness and train customers to wait for discounts.</p>
+        <p class="ps-test-example">Try: Post a "this weekend only" item on Thursday evening. Track whether Saturday sales on that item differ from your normal average.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">How to know if an adjustment worked</p>
+  <ul class="ps-rule-list">
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">1</div>
+      <p class="ps-rule-text"><strong>Give each change at least two weekends.</strong> One good or bad weekend can be weather, a nearby event, or pure chance. Two or three weekends of consistent data is more meaningful than a single outlier.</p>
+    </li>
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">2</div>
+      <p class="ps-rule-text"><strong>Compare to your Phase 1 baseline.</strong> Your weekend log from months 1–6 is your control group. If your average Saturday sales were $180 and they're now consistently $240, something changed. That's the conversation to have with yourself about what you did differently.</p>
+    </li>
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">3</div>
+      <p class="ps-rule-text"><strong>Keep noting the one-sentence observation.</strong> Numbers tell you what happened. Your observation tells you why. Both matter.</p>
+    </li>
+  </ul>
+
+  <div class="ps-warning">
+    <p class="ps-warning-label">Common Phase 2 mistake</p>
+    <p class="ps-warning-text">Overreacting to a bad month by changing everything at once. If month nine is slow, look at your log before you act. Is it consistently slower, or was there a rainy stretch, a holiday weekend, or a local event that pulled foot traffic away? Context matters before conclusions.</p>
+  </div>
+
+  <p class="ps-section-label">Phase 2 check-in — ask yourself at month 12</p>
+  <div class="ps-review-box">
+    <p class="ps-review-title">Midpoint review questions</p>
+    <ul class="ps-review-list">
+      <li>Do I have a clear picture of which days and hours are worth being fully "on" vs. lighter traffic?</li>
+      <li>Have I identified my top 3–5 products and made sure they're prominent in my space?</li>
+      <li>Do I know whether my social posts are actually driving foot traffic, or am I just posting into the void?</li>
+      <li>Have I had at least one real conversation with a customer about what they wish I carried?</li>
+      <li>Am I enjoying this enough to want to keep going — and what does that tell me about Phase 3?</li>
+    </ul>
+  </div>
+
+  <div class="ps-next">
+    <div>
+      <p class="ps-next-label">Up next</p>
+      <p class="ps-next-title">Phase 3: Decide — making an informed call about your next chapter</p>
+    </div>
+    <a class="ps-next-link" href="phase3.html">Read Phase 3 →</a>
+  </div>
+</div>

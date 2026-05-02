@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Shops on Main — Welcome Card</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #e8e6e0; font-family: 'DM Sans', sans-serif; padding: 40px 20px; display: flex; flex-direction: column; align-items: center; gap: 40px; }
+
+  .print-label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #888; font-family: 'DM Sans', sans-serif; align-self: flex-start; margin-left: calc(50% - 330px); }
+
+  /* Card base — 5.5 x 8.5 inches at 96dpi screen = 528 x 816px */
+  .card { width: 528px; height: 816px; position: relative; overflow: hidden; border-radius: 6px; }
+
+  /* ── FRONT ── */
+  .card-front { background: #0F6E56; display: flex; flex-direction: column; }
+
+  .front-top { flex: 1; padding: 52px 48px 36px; display: flex; flex-direction: column; }
+  .front-eyebrow { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 500; margin-bottom: 20px; }
+  .front-title { font-family: 'Lora', serif; font-size: 42px; font-weight: 600; color: #fff; line-height: 1.15; margin-bottom: 20px; }
+  .front-title span { color: #9FE1CB; }
+  .front-tagline { font-size: 16px; color: rgba(255,255,255,0.75); line-height: 1.65; max-width: 360px; margin-bottom: 36px; }
+
+  .front-experiment { background: rgba(255,255,255,0.1); border-radius: 10px; padding: 20px 22px; margin-bottom: 36px; }
+  .front-experiment-label { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: #9FE1CB; font-weight: 500; margin-bottom: 8px; }
+  .front-experiment-text { font-size: 14px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+  .front-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 0; }
+  .front-phase { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 14px 14px; border: 1px solid rgba(255,255,255,0.12); }
+  .front-phase-num { font-size: 10px; font-weight: 500; color: #9FE1CB; margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
+  .front-phase-title { font-size: 15px; font-weight: 500; color: #fff; margin-bottom: 3px; }
+  .front-phase-time { font-size: 11px; color: rgba(255,255,255,0.45); }
+
+  .front-bottom { background: rgba(0,0,0,0.2); padding: 24px 48px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .front-qr-area { display: flex; align-items: center; gap: 16px; }
+  .front-qr-box { width: 72px; height: 72px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .front-qr-placeholder { font-size: 9px; color: #888; text-align: center; line-height: 1.4; }
+  .front-qr-text { }
+  .front-qr-label { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 3px; }
+  .front-qr-url { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .front-city { text-align: right; }
+  .front-city-name { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); }
+  .front-city-prog { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+  /* ── BACK ── */
+  .card-back { background: #fff; display: flex; flex-direction: column; }
+
+  .back-header { background: #f7f9f7; padding: 28px 40px 24px; border-bottom: 1px solid #e8e6e0; }
+  .back-header-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+  .back-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 600; color: #1a1a18; }
+  .back-subtitle { font-size: 13px; color: #888780; }
+
+  .back-body { flex: 1; padding: 28px 40px; display: flex; flex-direction: column; gap: 22px; }
+
+  .back-section { }
+  .back-section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: #1D9E75; font-weight: 500; margin-bottom: 10px; }
+  .back-info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .back-info-item { background: #f7f9f7; border-radius: 8px; padding: 12px 14px; }
+  .back-info-key { font-size: 11px; color: #888780; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 500; }
+  .back-info-val { font-size: 13px; color: #1a1a18; font-weight: 500; line-height: 1.4; }
+
+  .back-rules { display: flex; flex-direction: column; gap: 7px; }
+  .back-rule { display: flex; gap: 10px; align-items: flex-start; }
+  .back-rule-dot { width: 5px; height: 5px; background: #1D9E75; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .back-rule-text { font-size: 13px; color: #444441; line-height: 1.5; }
+
+  .back-divider { height: 1px; background: #e8e6e0; }
+
+  .back-contact-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .back-contact-item { background: #E1F5EE; border-radius: 20px; padding: 6px 14px; display: flex; align-items: center; gap: 6px; }
+  .back-contact-label { font-size: 11px; color: #085041; font-weight: 500; }
+  .back-contact-val { font-size: 12px; color: #0F6E56; }
+
+  .back-footer { background: #0F6E56; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; }
+  .back-footer-text { font-size: 12px; color: rgba(255,255,255,0.65); }
+  .back-footer-text strong { color: #fff; font-weight: 500; }
+  .back-footer-url { font-size: 12px; color: #9FE1CB; }
+
+  /* QR code SVG pattern — simple placeholder grid */
+  .qr-svg { width: 52px; height: 52px; }
+</style>
+</head>
+<body>
+
+<div class="print-label">Front — 5.5" × 8.5"</div>
+<div class="card card-front">
+  <div class="front-top">
+    <p class="front-eyebrow">City of Bothell · Pop Shops on Main</p>
+    <h1 class="front-title">Welcome to<br><span>your pop-up.</span></h1>
+    <p class="front-tagline">This space is yours to experiment with for the next two years. Whether you discover that physical retail is exactly right for your business — or confirm that online is your sweet spot — both are wins.</p>
+
+    <div class="front-experiment">
+      <p class="front-experiment-label">The experiment mindset</p>
+      <p class="front-experiment-text">Think of your time here as a structured test, not just a retail assignment. You're running a real experiment with real customers. Leave with answers, whatever direction they point.</p>
+    </div>
+
+    <div class="front-phases">
+      <div class="front-phase">
+        <p class="front-phase-num">Phase 1</p>
+        <p class="front-phase-title">Learn</p>
+        <p class="front-phase-time">Months 1–6</p>
+      </div>
+      <div class="front-phase">
+        <p class="front-phase-num">Phase 2</p>
+        <p class="front-phase-title">Adjust</p>
+        <p class="front-phase-time">Months 7–18</p>
+      </div>
+      <div class="front-phase">
+        <p class="front-phase-num">Phase 3</p>
+        <p class="front-phase-title">Decide</p>
+        <p class="front-phase-time">Months 19–24</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="front-bottom">
+    <div class="front-qr-area">
+      <div class="front-qr-box">
+        <!-- QR code placeholder — replace with actual QR at print time -->
+        <svg class="qr-svg" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="2" fill="none" stroke="#1a1a18" stroke-width="2"/>
+          <rect x="6" y="6" width="12" height="12" rx="1" fill="#1a1a18"/>
+          <rect x="30" y="2" width="20" height="20" rx="2" fill="none" stroke="#1a1a18" stroke-width="2"/>
+          <rect x="34" y="6" width="12" height="12" rx="1" fill="#1a1a18"/>
+          <rect x="2" y="30" width="20" height="20" rx="2" fill="none" stroke="#1a1a18" stroke-width="2"/>
+          <rect x="6" y="34" width="12" height="12" rx="1" fill="#1a1a18"/>
+          <rect x="30" y="30" width="4" height="4" fill="#1a1a18"/>
+          <rect x="36" y="30" width="4" height="4" fill="#1a1a18"/>
+          <rect x="42" y="30" width="4" height="4" fill="#1a1a18"/>
+          <rect x="30" y="36" width="4" height="4" fill="#1a1a18"/>
+          <rect x="42" y="36" width="4" height="4" fill="#1a1a18"/>
+          <rect x="30" y="42" width="4" height="4" fill="#1a1a18"/>
+          <rect x="36" y="42" width="4" height="4" fill="#1a1a18"/>
+          <rect x="42" y="42" width="4" height="4" fill="#1a1a18"/>
+        </svg>
+      </div>
+      <div class="front-qr-text">
+        <p class="front-qr-label">Scan for your full guide</p>
+        <p class="front-qr-url">yoursite.com/popshops</p>
+      </div>
+    </div>
+    <div class="front-city">
+      <p class="front-city-name">City of Bothell, WA</p>
+      <p class="front-city-prog">bothellwa.gov</p>
+    </div>
+  </div>
+</div>
+
+<div class="print-label">Back — 5.5" × 8.5"</div>
+<div class="card card-back">
+  <div class="back-header">
+    <div class="back-header-top">
+      <p class="back-title">Quick reference</p>
+      <p class="back-subtitle">Keep this card with you</p>
+    </div>
+  </div>
+
+  <div class="back-body">
+
+    <div class="back-section">
+      <p class="back-section-label">Hours &amp; location</p>
+      <div class="back-info-grid">
+        <div class="back-info-item">
+          <p class="back-info-key">Open</p>
+          <p class="back-info-val">Thursday – Sunday<br>Noon – 6:00 PM</p>
+        </div>
+        <div class="back-info-item">
+          <p class="back-info-key">Location</p>
+          <p class="back-info-val">Main Street<br>Downtown Bothell, WA</p>
+        </div>
+        <div class="back-info-item">
+          <p class="back-info-key">Setup by</p>
+          <p class="back-info-val">11:30 AM<br>each open day</p>
+        </div>
+        <div class="back-info-item">
+          <p class="back-info-key">Breakdown</p>
+          <p class="back-info-val">By 6:30 PM<br>each open day</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="back-divider"></div>
+
+    <div class="back-section">
+      <p class="back-section-label">What's provided</p>
+      <div class="back-rules">
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Pre-fabricated structure with electricity</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Basic shelving — bring your own display materials</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Shared restroom access nearby</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">City social media amplification (tag us!)</p></div>
+      </div>
+    </div>
+
+    <div class="back-divider"></div>
+
+    <div class="back-section">
+      <p class="back-section-label">A few important rules</p>
+      <div class="back-rules">
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Notify the city at least 48 hours in advance if you can't make a scheduled day</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Signage must stay within your assigned space — no sidewalk boards</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Food and beverage sales require a separate permit — check with the city first</p></div>
+        <div class="back-rule"><div class="back-rule-dot"></div><p class="back-rule-text">Subletting or sharing your space requires prior city approval</p></div>
+      </div>
+    </div>
+
+    <div class="back-divider"></div>
+
+    <div class="back-section">
+      <p class="back-section-label">Get in touch</p>
+      <div class="back-contact-row">
+        <div class="back-contact-item">
+          <p class="back-contact-label">Program contact</p>
+          <p class="back-contact-val">name@bothellwa.gov</p>
+        </div>
+        <div class="back-contact-item">
+          <p class="back-contact-label">Phone</p>
+          <p class="back-contact-val">(425) 000-0000</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="back-footer">
+    <p class="back-footer-text"><strong>Pop Shops on Main</strong> · City of Bothell, WA</p>
+    <p class="back-footer-url">bothellwa.gov/popshops</p>
+  </div>
+</div>
+
+</body>
+</html>

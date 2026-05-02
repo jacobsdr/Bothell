@@ -1,0 +1,143 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-tag { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-post-cards { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-post { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; overflow: hidden; }
+  .ps-post-head { background: #f7f9f7; padding: 12px 18px; border-bottom: 1px solid #e8e6e0; display: flex; align-items: center; justify-content: space-between; }
+  .ps-post-type { font-size: 12px; font-weight: 500; color: #0F6E56; }
+  .ps-post-timing { font-size: 12px; color: #888780; }
+  .ps-post-body { padding: 14px 18px; }
+  .ps-post-template { font-size: 14px; color: #2c2c2a; line-height: 1.7; margin: 0 0 10px; font-style: italic; }
+  .ps-post-note { font-size: 12px; color: #888780; margin: 0; }
+  .ps-hashtags { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; margin-bottom: 32px; }
+  .ps-hashtags-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 12px; }
+  .ps-tag-grid { display: flex; flex-wrap: wrap; gap: 7px; }
+  .ps-hashtag { background: #E1F5EE; color: #0F6E56; font-size: 13px; padding: 5px 12px; border-radius: 20px; font-weight: 500; }
+  .ps-hashtag.gray { background: #F1EFE8; color: #5f5e5a; }
+  .ps-steps { display: flex; flex-direction: column; gap: 10px; margin-bottom: 32px; }
+  .ps-step { display: flex; gap: 16px; align-items: flex-start; }
+  .ps-step-num { width: 28px; height: 28px; border-radius: 50%; background: #E1F5EE; color: #0F6E56; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .ps-step-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 4px; }
+  .ps-step-text { font-size: 13px; color: #5f5e5a; line-height: 1.6; margin: 0; }
+  .ps-list-box { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-list-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 10px; }
+  .ps-list-items { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+  .ps-list-items li { font-size: 13px; color: #5f5e5a; line-height: 1.55; display: flex; gap: 8px; }
+  .ps-list-items li::before { content: "→"; color: #9FE1CB; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  @media (max-width: 540px) { .ps-title { font-size: 26px; } }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-tag">Bridging online to in-person</div>
+    <h1 class="ps-title">Turn your existing followers into in-person visitors</h1>
+    <p class="ps-sub">You already have an audience. The question is how to get them to show up in person — and then use your physical presence to strengthen the online relationship at the same time.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">Why this matters for your specific situation</p>
+    <p class="ps-callout-text">Unlike a brand-new business, you're not starting from zero. You have followers, customers, and credibility online. That's an asset most pop-up vendors don't have. Your job isn't to build an audience from scratch — it's to activate the one you already have and give them a reason to cross from the screen to your door.</p>
+  </div>
+
+  <p class="ps-section-label">The announcement week — what to post before you open</p>
+  <div class="ps-post-cards">
+    <div class="ps-post">
+      <div class="ps-post-head"><span class="ps-post-type">Monday — the announcement</span><span class="ps-post-timing">Post with a photo of your space or product</span></div>
+      <div class="ps-post-body">
+        <p class="ps-post-template">"Exciting news — [Business Name] now has a physical home! I've joined Pop Shops on Main in downtown Bothell, open Thu–Sun noon–6pm. If you've been following along online and always wanted to see the work in person, now's your chance. Come say hi — I'd love to meet you."</p>
+        <p class="ps-post-note">Tag @CityofBothell and use #BothellWA and #PopShopsOnMain so local people can discover you too.</p>
+      </div>
+    </div>
+    <div class="ps-post">
+      <div class="ps-post-head"><span class="ps-post-type">Thursday — the reminder</span><span class="ps-post-timing">Post morning of your first open day</span></div>
+      <div class="ps-post-body">
+        <p class="ps-post-template">"We're open today! Pop Shops on Main, downtown Bothell, noon–6. I'll be here all weekend. Come see [specific product] in person — it's one of those things that's hard to fully appreciate in photos."</p>
+        <p class="ps-post-note">Mention one specific product. Vague posts ("come check us out!") underperform posts that give people something concrete to be curious about.</p>
+      </div>
+    </div>
+    <div class="ps-post">
+      <div class="ps-post-head"><span class="ps-post-type">Behind the scenes — any day</span><span class="ps-post-timing">During setup or a quiet moment</span></div>
+      <div class="ps-post-body">
+        <p class="ps-post-template">"Setting up for the weekend — here's what the space looks like right now. I'm still figuring out the display [photo of in-progress setup]. Come see the final version this weekend!"</p>
+        <p class="ps-post-note">Behind-the-scenes content performs well because it makes followers feel included in the process. It also creates curiosity about what the "finished" version looks like.</p>
+      </div>
+    </div>
+    <div class="ps-post">
+      <div class="ps-post-head"><span class="ps-post-type">After a good weekend</span><span class="ps-post-timing">Sunday evening or Monday</span></div>
+      <div class="ps-post-body">
+        <p class="ps-post-template">"Incredible first weekend at Pop Shops. Met so many of you in person for the first time — thank you for coming out. [Specific observation, e.g. 'The [product] sold out by Saturday afternoon']. Back again this Thursday. See you then."</p>
+        <p class="ps-post-note">Closing the loop with a recap builds momentum for the next weekend and shows online followers that real things are happening worth showing up for.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Local hashtags to use in Bothell</p>
+  <div class="ps-hashtags">
+    <p class="ps-hashtags-title">Add these to your posts to reach local people who don't already follow you</p>
+    <div class="ps-tag-grid">
+      <span class="ps-hashtag">#BothellWA</span>
+      <span class="ps-hashtag">#PopShopsOnMain</span>
+      <span class="ps-hashtag">#ShopBothell</span>
+      <span class="ps-hashtag">#DowntownBothell</span>
+      <span class="ps-hashtag">#BothellSmallBusiness</span>
+      <span class="ps-hashtag gray">#KenmoreWA</span>
+      <span class="ps-hashtag gray">#NorthSeattle</span>
+      <span class="ps-hashtag gray">#EastsideWA</span>
+    </div>
+    <p style="font-size:12px;color:#888780;margin:12px 0 0;">Green tags are highest priority. Gray tags reach a broader regional audience — useful occasionally but don't overload every post.</p>
+  </div>
+
+  <p class="ps-section-label">Building a simple customer list</p>
+  <p style="font-size:14px;color:#5f5e5a;line-height:1.65;margin:0 0 14px;">You don't need a POS system or email software to start. The goal is to capture contact information from people who visit so you can reach them directly — without relying on social media algorithms.</p>
+  <div class="ps-steps">
+    <div class="ps-step">
+      <div class="ps-step-num">1</div>
+      <div>
+        <p class="ps-step-title">Put out a simple sign-up card or tablet</p>
+        <p class="ps-step-text">A handwritten card that says "Sign up for new arrivals and weekend updates" with a line for name and email is enough. Or a tablet open to a Google Form. People who are genuinely interested will sign up — you don't need to push it.</p>
+      </div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-step-num">2</div>
+      <div>
+        <p class="ps-step-title">Store contacts in a Google Sheet</p>
+        <p class="ps-step-text">No software needed yet. A simple spreadsheet with name, email, and date they signed up is all you need. When you eventually move to an email tool like Mailchimp (free up to 500 contacts), you can import this list directly.</p>
+      </div>
+    </div>
+    <div class="ps-step">
+      <div class="ps-step-num">3</div>
+      <div>
+        <p class="ps-step-title">Email once a month — not more</p>
+        <p class="ps-step-text">A short monthly email ("Here's what's new at the pop-up this month") keeps you in mind without burning out your list. Include one product highlight, your hours, and a link to your online shop. That's it.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Using what you learn in-person to improve your online presence</p>
+  <div class="ps-list-box">
+    <p class="ps-list-title">Physical retail tells you things your online analytics can't</p>
+    <ul class="ps-list-items">
+      <li>The questions customers ask in person are your best product description and FAQ copy — write them down and add them to your listings</li>
+      <li>The products people pick up and examine most are your best candidates for better photography online</li>
+      <li>The stories customers tell about why they're buying (gifts, self-treat, specific occasion) are your best social content angles</li>
+      <li>If customers are surprised by the quality when they see it in person, your online photos aren't doing the product justice — that's a fixable problem</li>
+      <li>Repeat visitors are your most loyal customers — note who comes back and what they buy, because those people are also likely your best online advocates</li>
+    </ul>
+  </div>
+</div>
