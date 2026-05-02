@@ -1,0 +1,196 @@
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  .ps-wrap { font-family: 'DM Sans', sans-serif; color: #1a1a18; max-width: 720px; margin: 0 auto; padding: 0 24px 60px; background: #fff; }
+  .ps-back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #888780; text-decoration: none; margin: 32px 0 0; }
+  .ps-back:hover { color: #0F6E56; }
+  .ps-back svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ps-hero { padding: 24px 0 32px; border-bottom: 1px solid #e8e6e0; }
+  .ps-tag { display: inline-flex; align-items: center; gap: 7px; background: #E1F5EE; color: #085041; font-size: 12px; font-weight: 500; padding: 5px 14px; border-radius: 20px; margin-bottom: 14px; }
+  .ps-title { font-family: 'Lora', serif; font-size: 32px; font-weight: 600; line-height: 1.25; margin: 0 0 16px; }
+  .ps-sub { font-size: 16px; color: #5f5e5a; line-height: 1.7; max-width: 560px; margin: 0; }
+  .ps-callout { background: #f7f9f7; border-left: 3px solid #1D9E75; border-radius: 0 10px 10px 0; padding: 18px 22px; margin: 32px 0; }
+  .ps-callout-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #0F6E56; font-weight: 500; margin: 0 0 6px; }
+  .ps-callout-text { font-size: 15px; color: #2c2c2a; line-height: 1.65; margin: 0; }
+  .ps-section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin: 40px 0 16px; }
+  .ps-week { display: flex; flex-direction: column; gap: 0; border: 1px solid #e8e6e0; border-radius: 12px; overflow: hidden; margin-bottom: 32px; }
+  .ps-week-item { padding: 16px 20px; border-bottom: 1px solid #f0ede8; display: flex; gap: 16px; align-items: flex-start; }
+  .ps-week-item:last-child { border-bottom: none; }
+  .ps-week-day { width: 80px; flex-shrink: 0; }
+  .ps-week-day-name { font-size: 13px; font-weight: 500; color: #1a1a18; }
+  .ps-week-day-type { font-size: 11px; color: #888780; margin-top: 2px; }
+  .ps-week-content { flex: 1; }
+  .ps-week-action { font-size: 13px; font-weight: 500; color: #0F6E56; margin-bottom: 4px; }
+  .ps-week-detail { font-size: 13px; color: #5f5e5a; line-height: 1.55; }
+  .ps-content-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 32px; }
+  .ps-content-card { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 16px 18px; }
+  .ps-content-type { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #1D9E75; font-weight: 500; margin-bottom: 6px; }
+  .ps-content-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 6px; }
+  .ps-content-desc { font-size: 13px; color: #5f5e5a; line-height: 1.55; margin-bottom: 8px; }
+  .ps-content-performs { font-size: 12px; color: #888780; font-style: italic; }
+  .ps-hashtags { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 18px 20px; margin-bottom: 32px; }
+  .ps-hashtag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 8px; }
+  .ps-hashtag { background: #E1F5EE; color: #0F6E56; font-size: 13px; padding: 5px 12px; border-radius: 20px; font-weight: 500; }
+  .ps-hashtag.secondary { background: #F1EFE8; color: #5f5e5a; }
+  .ps-hashtag-note { font-size: 12px; color: #888780; margin: 0; }
+  .ps-city-channels { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
+  .ps-channel { background: #fff; border: 1px solid #e8e6e0; border-radius: 10px; padding: 14px 18px; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+  .ps-channel-name { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 3px; }
+  .ps-channel-tip { font-size: 13px; color: #5f5e5a; line-height: 1.5; }
+  .ps-channel-handle { font-size: 12px; color: #0F6E56; white-space: nowrap; flex-shrink: 0; }
+  .ps-promo-box { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-promo-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 10px; }
+  .ps-promo-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .ps-promo-list li { font-size: 13px; color: #5f5e5a; line-height: 1.55; display: flex; gap: 8px; }
+  .ps-promo-list li::before { content: "→"; color: #9FE1CB; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  .ps-warning { background: #FAEEDA; border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; }
+  .ps-warning-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #633806; font-weight: 500; margin: 0 0 6px; }
+  .ps-warning-text { font-size: 14px; color: #412402; line-height: 1.6; margin: 0; }
+  @media (max-width: 540px) {
+    .ps-content-grid { grid-template-columns: 1fr; }
+    .ps-week-day { width: 60px; }
+    .ps-title { font-size: 26px; }
+  }
+</style>
+
+<div class="ps-wrap">
+  <a class="ps-back" href="index.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide home
+  </a>
+
+  <div class="ps-hero">
+    <div class="ps-tag">Marketing your pop-up</div>
+    <h1 class="ps-title">A simple weekly rhythm that actually drives foot traffic</h1>
+    <p class="ps-sub">You don't need a marketing strategy. You need a repeatable weekly habit that keeps your existing audience aware you exist in person — and helps local people who don't know you yet find you.</p>
+  </div>
+
+  <div class="ps-callout">
+    <p class="ps-callout-label">The core principle</p>
+    <p class="ps-callout-text">Consistency beats creativity. One post every Thursday morning for six months will outperform sporadic bursts of elaborate content. The algorithm rewards regularity, and your audience learns to expect it. Pick a rhythm you can actually sustain, then stick to it.</p>
+  </div>
+
+  <p class="ps-section-label">A simple weekly posting rhythm</p>
+  <div class="ps-week">
+    <div class="ps-week-item">
+      <div class="ps-week-day"><p class="ps-week-day-name">Monday</p><p class="ps-week-day-type">Optional</p></div>
+      <div class="ps-week-content">
+        <p class="ps-week-action">Product or behind-the-scenes post</p>
+        <p class="ps-week-detail">A photo of something you're making, restocking, or preparing for the weekend. Builds anticipation without announcing anything yet. Good for Instagram or Facebook.</p>
+      </div>
+    </div>
+    <div class="ps-week-item">
+      <div class="ps-week-day"><p class="ps-week-day-name">Thursday</p><p class="ps-week-day-type">Essential</p></div>
+      <div class="ps-week-content">
+        <p class="ps-week-action">"We're open this weekend" reminder</p>
+        <p class="ps-week-detail">Short, specific, every week. Mention one product. Include your hours and location. Tag @CityofBothell. This is the post that actually drives people to show up — don't skip it.</p>
+      </div>
+    </div>
+    <div class="ps-week-item">
+      <div class="ps-week-day"><p class="ps-week-day-name">Saturday</p><p class="ps-week-day-type">Recommended</p></div>
+      <div class="ps-week-content">
+        <p class="ps-week-action">In-the-moment story or post</p>
+        <p class="ps-week-detail">"We're here right now — come find us on Main Street." A photo of your setup that day. This catches people who are already out and looking for something to do. Stories work well for this.</p>
+      </div>
+    </div>
+    <div class="ps-week-item">
+      <div class="ps-week-day"><p class="ps-week-day-name">Sunday eve</p><p class="ps-week-day-type">Optional</p></div>
+      <div class="ps-week-content">
+        <p class="ps-week-action">Weekend recap</p>
+        <p class="ps-week-detail">One sentence about how the weekend went. What sold out? Who came by? What was a highlight? This closes the loop for followers who saw your Thursday post and builds momentum for next week.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Content types that perform well for pop-ups</p>
+  <div class="ps-content-grid">
+    <div class="ps-content-card">
+      <p class="ps-content-type">High performer</p>
+      <p class="ps-content-title">Setup / behind the scenes</p>
+      <p class="ps-content-desc">A photo or short video of you arranging your space before opening. People love seeing the process — it makes them feel connected before they've even met you.</p>
+      <p class="ps-content-performs">Works best on Instagram Reels and Stories</p>
+    </div>
+    <div class="ps-content-card">
+      <p class="ps-content-type">High performer</p>
+      <p class="ps-content-title">One product, up close</p>
+      <p class="ps-content-desc">A close-up photo of one item with a short caption explaining what makes it special. Not a catalog shot — something that shows texture, detail, or craft.</p>
+      <p class="ps-content-performs">Works best on Instagram feed and Facebook</p>
+    </div>
+    <div class="ps-content-card">
+      <p class="ps-content-type">Good performer</p>
+      <p class="ps-content-title">Customer moment (with permission)</p>
+      <p class="ps-content-desc">A photo of someone enjoying your product or visiting your space. Tag them if they're okay with it. Social proof from real people is more convincing than any ad.</p>
+      <p class="ps-content-performs">Works best on Facebook and Instagram</p>
+    </div>
+    <div class="ps-content-card">
+      <p class="ps-content-type">Good performer</p>
+      <p class="ps-content-title">The "why I make this"</p>
+      <p class="ps-content-desc">A short caption or short video about your story — why you started, what you love about what you make. Post this once every few months. It consistently outperforms product posts for reach.</p>
+      <p class="ps-content-performs">Works best as a longer Instagram caption</p>
+    </div>
+    <div class="ps-content-card">
+      <p class="ps-content-type">Use sparingly</p>
+      <p class="ps-content-title">Promotions and discounts</p>
+      <p class="ps-content-desc">Occasional promotions can drive traffic for a specific weekend. But use them sparingly — too many discounts trains your audience to wait for a sale rather than buy at full price.</p>
+      <p class="ps-content-performs">Once a month maximum, tied to a specific reason</p>
+    </div>
+    <div class="ps-content-card">
+      <p class="ps-content-type">Use sparingly</p>
+      <p class="ps-content-title">Reposts and reshares</p>
+      <p class="ps-content-desc">Resharing the city's posts about Pop Shops, or other vendors tagging you, builds community and costs no effort. But your own original content should be the majority of what you post.</p>
+      <p class="ps-content-performs">Fine occasionally — not as a replacement for original posts</p>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Local hashtags to use</p>
+  <div class="ps-hashtags">
+    <div class="ps-hashtag-row">
+      <span class="ps-hashtag">#BothellWA</span>
+      <span class="ps-hashtag">#PopShopsOnMain</span>
+      <span class="ps-hashtag">#ShopBothell</span>
+      <span class="ps-hashtag">#DowntownBothell</span>
+      <span class="ps-hashtag">#BothellSmallBusiness</span>
+    </div>
+    <div class="ps-hashtag-row">
+      <span class="ps-hashtag secondary">#KenmoreWA</span>
+      <span class="ps-hashtag secondary">#EastsideWA</span>
+      <span class="ps-hashtag secondary">#SeattleSmallBusiness</span>
+      <span class="ps-hashtag secondary">#PNWMade</span>
+      <span class="ps-hashtag secondary">#ShopLocal</span>
+    </div>
+    <p class="ps-hashtag-note">Use the green tags on every post. Use the gray tags occasionally to reach a broader regional audience — not every post needs all of them.</p>
+  </div>
+
+  <p class="ps-section-label">Using the city's social channels</p>
+  <div class="ps-city-channels">
+    <div class="ps-channel">
+      <div>
+        <p class="ps-channel-name">Tag the city in your posts</p>
+        <p class="ps-channel-tip">When you tag @CityofBothell in a post about your pop-up, the city can reshare it to their followers — giving you access to an audience you don't have yet. This is free reach. Use it every Thursday post at minimum.</p>
+      </div>
+      <span class="ps-channel-handle">@CityofBothell</span>
+    </div>
+    <div class="ps-channel">
+      <div>
+        <p class="ps-channel-name">Use #PopShopsOnMain consistently</p>
+        <p class="ps-channel-tip">This hashtag builds a collective feed of all vendor content from the program. When the city promotes Pop Shops generally, people who follow the hashtag see all vendor posts — including yours. It compounds over time as more vendors use it.</p>
+      </div>
+      <span class="ps-channel-handle">#PopShopsOnMain</span>
+    </div>
+  </div>
+
+  <p class="ps-section-label">Promotions — how to run one without undermining yourself</p>
+  <div class="ps-promo-box">
+    <p class="ps-promo-title">If you run a promotion, do it right</p>
+    <ul class="ps-promo-list">
+      <li>Always tie a promotion to a specific reason — a new product launch, a holiday weekend, your anniversary in the program. "Just because" discounts feel random and cheapen your brand.</li>
+      <li>Set a clear end date. "This weekend only" creates urgency. An open-ended discount is just a lower price.</li>
+      <li>Promote one thing, not everything. A discount on one item drives curiosity and foot traffic without cutting into your overall margin.</li>
+      <li>Track whether it actually worked. Did you sell more that weekend than your average? If not, the promotion cost you margin for no traffic gain — and you should try something different next time.</li>
+    </ul>
+  </div>
+
+  <div class="ps-warning">
+    <p class="ps-warning-label">The trap to avoid</p>
+    <p class="ps-warning-text">Posting only when you feel inspired. Marketing works through repetition and expectation, not quality alone. Your audience needs to see you regularly to remember to visit. Set a calendar reminder every Thursday morning and post something — even if it's just a quick photo of your setup. Showing up consistently is more valuable than occasional great content.</p>
+  </div>
+</div>
