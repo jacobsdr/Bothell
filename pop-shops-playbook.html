@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pop Shops Operations Playbook — City of Bothell</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --green: #2C6E49;
+    --green-light: #D6EDE1;
+    --green-mid: #4C9B6E;
+    --blue: #1B4F72;
+    --blue-light: #D4E6F1;
+    --amber: #B7770D;
+    --amber-light: #FDF0D0;
+    --red: #922B21;
+    --red-light: #FADBD8;
+    --gray-100: #F5F4F0;
+    --gray-200: #E8E6E0;
+    --gray-400: #A09D96;
+    --gray-600: #5C5955;
+    --gray-900: #1C1B19;
+    --white: #FFFFFF;
+    --nav-h: 68px;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+    --radius: 10px;
+    --radius-sm: 6px;
+    --shadow: 0 2px 12px rgba(0,0,0,0.07);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,0.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--gray-900);
+    background: var(--gray-100);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-h);
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    gap: 1.5rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-brand-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .nav-brand-text { line-height: 1.2; }
+  .nav-brand-city { font-size: 11px; opacity: 0.75; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-brand-program { font-size: 14px; font-weight: 500; }
+  .nav-links {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(255,255,255,0.80);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 5px 10px;
+    border-radius: var(--radius-sm);
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { background: rgba(255,255,255,0.15); color: #fff; }
+
+  /* HERO */
+  .hero {
+    background: var(--green);
+    color: #fff;
+    padding: 4rem 2rem 3.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 60% 0%, rgba(255,255,255,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+  }
+  .hero h1 em { font-style: italic; opacity: 0.85; }
+  .hero-sub {
+    font-size: 15px;
+    opacity: 0.75;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+  }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 100px;
+  }
+
+  /* LAYOUT */
+  .page-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  /* TOC */
+  .toc {
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    padding: 1.5rem 1.75rem;
+    margin-bottom: 2.5rem;
+    box-shadow: var(--shadow);
+  }
+  .toc-heading {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 6px;
+  }
+  .toc-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--gray-900);
+    font-size: 14px;
+    transition: background 0.15s;
+  }
+  .toc-item:hover { background: var(--gray-100); }
+  .toc-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray-400);
+    min-width: 16px;
+  }
+  .toc-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: var(--radius-sm);
+    background: var(--green-light);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-bottom: 2rem;
+    background: var(--white);
+    border-radius: var(--radius);
+    border: 1px solid var(--gray-200);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 1.25rem 1.75rem;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .section-num {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray-400);
+    min-width: 20px;
+  }
+  .section-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: var(--radius-sm);
+    background: var(--green-light);
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--gray-900);
+  }
+  .section-body { padding: 1.75rem; }
+
+  .section-intro {
+    font-size: 14px;
+    color: var(--gray-600);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  /* QUOTE */
+  .quote-block {
+    border-left: 3px solid var(--green);
+    padding: 0.75rem 1.25rem;
+    margin: 1.25rem 0;
+    background: var(--green-light);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 14px;
+    color: var(--green);
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* PRINCIPLE LIST */
+  .principle-list { list-style: none; }
+  .principle-list li {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 9px 0;
+    font-size: 14px;
+    color: var(--gray-600);
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .principle-list li:last-child { border-bottom: none; }
+  .principle-list li i { color: var(--green); margin-top: 3px; font-size: 14px; flex-shrink: 0; }
+
+  /* OUTCOME GRID */
+  .outcome-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  .outcome-card {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+  }
+  .outcome-card-icon { font-size: 20px; color: var(--green); margin-bottom: 8px; }
+  .outcome-card h4 { font-size: 13px; font-weight: 500; margin-bottom: 4px; }
+  .outcome-card p { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
+
+  /* TABS */
+  .tabs-wrap { margin-top: 1.25rem; }
+  .tab-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 0.75rem;
+  }
+  .tab-btn {
+    font-size: 13px;
+    font-family: var(--font-body);
+    padding: 5px 14px;
+    border-radius: 100px;
+    border: 1px solid var(--gray-200);
+    background: var(--gray-100);
+    color: var(--gray-600);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .tab-btn:hover { border-color: var(--green); color: var(--green); }
+  .tab-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; }
+  .checklist li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li input[type=checkbox] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--green);
+    flex-shrink: 0;
+  }
+
+  /* SUBSECTION */
+  .subsection { margin-top: 1.5rem; }
+  .sub-title {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--gray-900);
+    margin-bottom: 0.6rem;
+  }
+  .sub-body { font-size: 14px; color: var(--gray-600); line-height: 1.7; }
+
+  /* ESCALATION */
+  .escalation-row {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 13px;
+  }
+  .escalation-row:last-child { border-bottom: none; }
+  .trigger {
+    background: var(--blue-light);
+    color: var(--blue);
+    padding: 3px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .arrow { color: var(--gray-400); flex-shrink: 0; margin-top: 2px; }
+  .action-text { color: var(--gray-600); flex: 1; }
+
+  /* REVIEW ROWS */
+  .review-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--gray-200);
+    font-size: 13px;
+    color: var(--gray-600);
+  }
+  .review-row:last-child { border-bottom: none; }
+  .review-tag {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .tag-step { background: var(--amber-light); color: var(--amber); }
+  .tag-30 { background: var(--green-light); color: var(--green); }
+  .tag-6m { background: var(--blue-light); color: var(--blue); }
+  .tag-18m { background: var(--amber-light); color: var(--amber); }
+
+  /* TRAFFIC LIGHT */
+  .traffic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  @media (max-width: 560px) { .traffic-grid { grid-template-columns: 1fr; } }
+  .traffic-card {
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    border: 1px solid;
+  }
+  .traffic-card.green { background: var(--green-light); border-color: var(--green-mid); }
+  .traffic-card.yellow { background: var(--amber-light); border-color: #D4A017; }
+  .traffic-card.red { background: var(--red-light); border-color: #C0392B; }
+  .tc-label {
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .traffic-card.green .tc-label { color: var(--green); }
+  .traffic-card.yellow .tc-label { color: var(--amber); }
+  .traffic-card.red .tc-label { color: var(--red); }
+  .tc-items { font-size: 12px; line-height: 1.9; }
+  .traffic-card.green .tc-items { color: #1E5234; }
+  .traffic-card.yellow .tc-items { color: #7A520C; }
+  .traffic-card.red .tc-items { color: #6B1F1A; }
+
+  /* RESPONSE CARDS */
+  .response-card {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    margin-top: 10px;
+  }
+  .response-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .response-body { font-size: 13px; color: var(--gray-600); line-height: 1.7; }
+
+  /* METRIC GRID */
+  .metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 1rem;
+  }
+  .metric-card {
+    background: var(--gray-100);
+    border-radius: var(--radius);
+    padding: 1rem 1.1rem;
+    border: 1px solid var(--gray-200);
+  }
+  .metric-card-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 6px;
+  }
+  .metric-card-items { font-size: 13px; color: var(--gray-600); line-height: 1.9; }
+
+  /* TEMPLATE BOX */
+  .template-label {
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--gray-400);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .template-box {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 1.1rem 1.25rem;
+    font-size: 13px;
+    font-family: 'Courier New', monospace;
+    line-height: 1.75;
+    color: var(--gray-600);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .copy-btn {
+    font-size: 12px;
+    font-family: var(--font-body);
+    padding: 4px 12px;
+    border: 1px solid var(--gray-200);
+    border-radius: 100px;
+    background: var(--white);
+    color: var(--gray-600);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.15s;
+  }
+  .copy-btn:hover { border-color: var(--green); color: var(--green); }
+
+  /* FOOTER */
+  footer {
+    background: var(--green);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 2rem 1.5rem;
+    font-size: 13px;
+  }
+  footer strong { color: #fff; }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .page-wrap { padding: 1.5rem 1rem 3rem; }
+    .section-body { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="#">
+    <div class="nav-brand-icon"><i class="fa-solid fa-store"></i></div>
+    <div class="nav-brand-text">
+      <div class="nav-brand-city">City of Bothell</div>
+      <div class="nav-brand-program">Pop Shops Playbook</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#s1">Philosophy</a></li>
+    <li><a href="#s2">Lifecycle</a></li>
+    <li><a href="#s3">Health Monitoring</a></li>
+    <li><a href="#s4">Metrics</a></li>
+    <li><a href="#s5">Communications</a></li>
+    <li><a href="#s6">Annual Review</a></li>
+  </ul>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">City of Bothell — Economic Development</div>
+  <h1>Pop Shops Program<br><em>Operations Playbook</em></h1>
+  <p class="hero-sub">Internal staff guide for managing the Small Business Incubator Program with consistency, clarity, and care.</p>
+  <div class="hero-badge"><i class="fa-solid fa-lock"></i> For City Staff Use</div>
+</div>
+
+<div class="page-wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-heading">Jump to section</div>
+    <div class="toc-grid">
+      <a class="toc-item" href="#s1"><span class="toc-num">01</span><span class="toc-icon"><i class="fa-solid fa-flag"></i></span> Program Philosophy</a>
+      <a class="toc-item" href="#s2"><span class="toc-num">02</span><span class="toc-icon"><i class="fa-solid fa-route"></i></span> Vendor Lifecycle Playbook</a>
+      <a class="toc-item" href="#s3"><span class="toc-num">03</span><span class="toc-icon"><i class="fa-solid fa-heart-pulse"></i></span> Vendor Health Monitoring</a>
+      <a class="toc-item" href="#s4"><span class="toc-num">04</span><span class="toc-icon"><i class="fa-solid fa-chart-bar"></i></span> Metrics Dashboard Guide</a>
+      <a class="toc-item" href="#s5"><span class="toc-num">05</span><span class="toc-icon"><i class="fa-solid fa-envelope"></i></span> Communications Toolkit</a>
+      <a class="toc-item" href="#s6"><span class="toc-num">06</span><span class="toc-icon"><i class="fa-solid fa-calendar-check"></i></span> Annual Program Review</a>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1 ===== -->
+  <div class="section" id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <div class="section-icon"><i class="fa-solid fa-flag"></i></div>
+      <div class="section-title">Program Philosophy</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">This section aligns all City of Bothell staff around the intent of the Pop Shops program. It prevents the program from drifting into a standard landlord-tenant relationship over time. Staff should return to these principles regularly — especially as the program grows and new team members join.</p>
+
+      <div class="quote-block">"The long-term sustainability of Pop Shops depends less on the physical spaces themselves and more on whether the city creates repeatable operational systems that survive beyond individual staff members or vendor cohorts."</div>
+
+      <div class="subsection">
+        <div class="sub-title">Core principles</div>
+        <ul class="principle-list">
+          <li><i class="fa-solid fa-check"></i> The goal is experimentation, not guaranteed permanent retail. Both expanding into a storefront and returning to online-only with lessons learned are successful outcomes.</li>
+          <li><i class="fa-solid fa-check"></i> Staff should act as facilitators and connectors — not retail managers or compliance officers.</li>
+          <li><i class="fa-solid fa-check"></i> The city's role is to reduce friction and encourage learning, not to evaluate business viability.</li>
+          <li><i class="fa-solid fa-check"></i> Consistency matters more than perfection. A stable, predictable program builds trust with vendors and the community.</li>
+          <li><i class="fa-solid fa-check"></i> Ask "are they learning?" before asking "are they profitable?" — especially in the first 12 months.</li>
+          <li><i class="fa-solid fa-check"></i> Program operations must be documented so they are not dependent on any single staff member.</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">What success looks like</div>
+        <div class="outcome-grid">
+          <div class="outcome-card">
+            <div class="outcome-card-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <h4>Graduated to storefront</h4>
+            <p>Vendor used Pop Shops as a launchpad and signed a commercial lease in Bothell or nearby.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-card-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <h4>Returned with new knowledge</h4>
+            <p>Vendor returned to online-only with clearer product-market fit and stronger operations.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-card-icon"><i class="fa-solid fa-people-group"></i></div>
+            <h4>Community connection built</h4>
+            <p>Vendor built a local customer base and partnerships with other Bothell businesses.</p>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-card-icon"><i class="fa-solid fa-rotate"></i></div>
+            <h4>Cohort contributed to next</h4>
+            <p>Vendor shared learnings or mentored an incoming Pop Shops participant.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 2 ===== -->
+  <div class="section" id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <div class="section-icon"><i class="fa-solid fa-route"></i></div>
+      <div class="section-title">Vendor Lifecycle Playbook</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">The operational heartbeat of Pop Shops. Follow these steps for every vendor, every cycle. Each stage has a checklist, script, or framework to guide staff through the process consistently.</p>
+
+      <div class="tabs-wrap">
+        <div class="tab-row">
+          <button class="tab-btn active" onclick="switchTab('lc','pre',this)">Pre-arrival</button>
+          <button class="tab-btn" onclick="switchTab('lc','d30',this)">30-day check-in</button>
+          <button class="tab-btn" onclick="switchTab('lc','d180',this)">6-month review</button>
+          <button class="tab-btn" onclick="switchTab('lc','d540',this)">18-month transition</button>
+        </div>
+
+        <div class="tab-panel active" id="lc-pre">
+          <div class="sub-title">Pre-arrival checklist</div>
+          <p class="sub-body" style="margin-bottom:0.75rem; font-size:13px;">Complete all items before the vendor's first day.</p>
+          <ul class="checklist">
+            <li><input type="checkbox"> Space cleaned, inspected, and ready for occupancy</li>
+            <li><input type="checkbox"> Welcome kit assembled and placed in the space</li>
+            <li><input type="checkbox"> QR codes for city resources tested and working</li>
+            <li><input type="checkbox"> Vendor added to Pop Shops directory and social media schedule</li>
+            <li><input type="checkbox"> Emergency and after-hours contacts confirmed with vendor</li>
+            <li><input type="checkbox"> Access, key, and logistics walkthrough scheduled</li>
+            <li><input type="checkbox"> Vendor record created in tracking system</li>
+            <li><input type="checkbox"> Welcome email sent (see Section 5 for template)</li>
+            <li><input type="checkbox"> 30-day check-in date calendared</li>
+          </ul>
+        </div>
+
+        <div class="tab-panel" id="lc-d30">
+          <div class="sub-title">30-day check-in guide</div>
+          <p class="sub-body" style="margin-bottom:0.75rem; font-size:13px;">This can be a brief email or a 15-minute call. The goal is to catch friction early — not to evaluate performance.</p>
+          <div class="sub-title" style="margin-top:1rem;">Questions to ask</div>
+          <ul class="checklist" style="margin-bottom:1.25rem;">
+            <li><input type="checkbox"> Any operational friction or confusion since move-in?</li>
+            <li><input type="checkbox"> Are customers finding the space okay?</li>
+            <li><input type="checkbox"> Any infrastructure or facility concerns?</li>
+            <li><input type="checkbox"> What's one thing the city could do to support you right now?</li>
+          </ul>
+          <div class="sub-title">Escalation guide — if vendor says this, do this</div>
+          <div class="escalation-row"><span class="trigger">Foot traffic is low</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span><span class="action-text">Offer a collaborative social media feature post. Check if signage is adequate.</span></div>
+          <div class="escalation-row"><span class="trigger">Setup feels confusing</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span><span class="action-text">Schedule a 30-minute in-person walkthrough with city staff.</span></div>
+          <div class="escalation-row"><span class="trigger">I'm overwhelmed</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span><span class="action-text">Connect with the Bothell SBDC or a peer vendor mentor.</span></div>
+          <div class="escalation-row"><span class="trigger">Hours are inconsistent</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span><span class="action-text">Revisit expectations. Flag in tracker as Yellow if recurring.</span></div>
+          <div class="escalation-row"><span class="trigger">Everything is great</span><span class="arrow"><i class="fa-solid fa-arrow-right"></i></span><span class="action-text">Log as Green. Ask if they'd like to be featured in city communications.</span></div>
+        </div>
+
+        <div class="tab-panel" id="lc-d180">
+          <div class="sub-title">6-month review framework</div>
+          <p class="sub-body" style="margin-bottom:0.75rem; font-size:13px;">This is a strategic conversation. Focus on learning, not profit. Send the survey 1 week before the meeting.</p>
+          <div class="sub-title" style="margin-top:1rem;">Survey questions</div>
+          <ul class="checklist" style="margin-bottom:1.25rem;">
+            <li><input type="checkbox"> What has changed in your business since opening?</li>
+            <li><input type="checkbox"> What have you learned about your customers?</li>
+            <li><input type="checkbox"> What experiments have you tried? What worked?</li>
+            <li><input type="checkbox"> What support gaps exist that the city could address?</li>
+            <li><input type="checkbox"> Are you on track toward your original goals?</li>
+            <li><input type="checkbox"> What would you tell a new Pop Shops vendor?</li>
+          </ul>
+          <div class="sub-title">Staff tracking notes after review</div>
+          <ul class="checklist">
+            <li><input type="checkbox"> Update vendor health status (Green / Yellow / Red)</li>
+            <li><input type="checkbox"> Log key learnings in tracking system</li>
+            <li><input type="checkbox"> Note any resource referrals made</li>
+            <li><input type="checkbox"> Calendar 18-month transition planning date</li>
+          </ul>
+        </div>
+
+        <div class="tab-panel" id="lc-d540">
+          <div class="sub-title">18-month transition planning guide</div>
+          <p class="sub-body" style="margin-bottom:0.75rem; font-size:13px;">Help the vendor land intentionally — whether they're growing, pivoting, or graduating from the program.</p>
+          <div class="review-row"><span class="review-tag tag-step">Step 1</span><span>Hold a transition conversation using the off-ramp discussion template (see Section 5).</span></div>
+          <div class="review-row"><span class="review-tag tag-step">Step 2</span><span>Assess path: storefront expansion, return to online, pivot, or program extension request.</span></div>
+          <div class="review-row"><span class="review-tag tag-step">Step 3</span><span>Provide the Bothell Commercial Corridor Resource Sheet (local brokers, permitting contacts).</span></div>
+          <div class="review-row"><span class="review-tag tag-step">Step 4</span><span>Connect to relevant resources: SBDC, financing programs, business licensing support.</span></div>
+          <div class="review-row"><span class="review-tag tag-step">Step 5</span><span>Log final outcome in the annual program review dashboard.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 3 ===== -->
+  <div class="section" id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <div class="section-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+      <div class="section-title">Vendor Health Monitoring</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">Proactive program management. Review all vendor statuses monthly and update the tracker accordingly. The goal is to intervene early and supportively — not punitively.</p>
+
+      <div class="traffic-grid">
+        <div class="traffic-card green">
+          <div class="tc-label"><i class="fa-solid fa-circle-check"></i> Green — On Track</div>
+          <div class="tc-items">Consistent posted hours<br>Active merchandising<br>Responsive to city outreach<br>Engaged on social/online<br>Positive customer feedback</div>
+        </div>
+        <div class="traffic-card yellow">
+          <div class="tc-label"><i class="fa-solid fa-triangle-exclamation"></i> Yellow — Watch</div>
+          <div class="tc-items">Inconsistent presence<br>Declining engagement<br>Minimal updates or changes<br>Operational frustration signs<br>Slow response to outreach</div>
+        </div>
+        <div class="traffic-card red">
+          <div class="tc-label"><i class="fa-solid fa-circle-xmark"></i> Red — At Risk</div>
+          <div class="tc-items">Repeated unannounced closures<br>Signs of abandonment<br>Non-responsive to city<br>Clear disengagement<br>Customer complaints received</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">Response protocols</div>
+        <div class="response-card">
+          <div class="response-label" style="color: var(--green)"><i class="fa-solid fa-circle-check"></i> &nbsp;Green response</div>
+          <div class="response-body">Log status in tracker. Offer optional spotlight feature in city communications. Invite to share learnings with incoming vendors if interested.</div>
+        </div>
+        <div class="response-card">
+          <div class="response-label" style="color: var(--amber)"><i class="fa-solid fa-triangle-exclamation"></i> &nbsp;Yellow response</div>
+          <div class="response-body">Send a supportive check-in message — not a warning. Offer promotional assistance or a walkthrough visit. Consider connecting with a peer vendor or SBDC resource. Re-assess in 30 days.</div>
+        </div>
+        <div class="response-card">
+          <div class="response-label" style="color: var(--red)"><i class="fa-solid fa-circle-xmark"></i> &nbsp;Red response</div>
+          <div class="response-body">Initiate a formal conversation within 5 business days. Determine vendor intent to continue. Co-create either a recovery plan with clear milestones or a structured, supportive exit plan. Document all steps taken.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 4 ===== -->
+  <div class="section" id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <div class="section-icon"><i class="fa-solid fa-chart-bar"></i></div>
+      <div class="section-title">Metrics Dashboard Guide</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">Track these metrics to manage the program proactively and report impact to stakeholders and City Council. A lightweight dashboard — even a Google Sheet — is sufficient for a program of this size.</p>
+
+      <div class="metric-grid">
+        <div class="metric-card">
+          <div class="metric-card-label">Vendor roster tab</div>
+          <div class="metric-card-items">Business name<br>Contact info<br>Start date<br>Space assigned<br>Current health status</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Check-in log tab</div>
+          <div class="metric-card-items">Date of check-in<br>Check-in type (30-day / 6-mo / 18-mo)<br>Notes summary<br>Action items<br>Health status updated</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Occupancy tab</div>
+          <div class="metric-card-items">Space utilization rate<br>Days occupied vs. available<br>Vacancy gaps<br>Average vendor tenure<br>Waitlist count</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Issue log tab</div>
+          <div class="metric-card-items">Date reported<br>Issue type<br>Status (open / resolved)<br>Resolution notes<br>Staff responsible</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Off-ramp outcomes tab</div>
+          <div class="metric-card-items">Vendor name<br>Exit date<br>Outcome type<br>Post-program status<br>Follow-up notes</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card-label">Growth indicators tab</div>
+          <div class="metric-card-items">Self-reported revenue trend<br>New products or services added<br>Staff hired<br>Event participation<br>Customer base growth</div>
+        </div>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">Recommended tools</div>
+        <p class="sub-body">Any of the following work well for a program of this size: <strong>Google Sheets</strong> (free, collaborative, easy to share), <strong>Airtable</strong> (structured, good for filtered views and forms), or <strong>Notion</strong> (flexible, works well for combining notes and data). Choose whichever your team will actually maintain consistently — the tool matters less than the habit.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 5 ===== -->
+  <div class="section" id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <div class="section-icon"><i class="fa-solid fa-envelope"></i></div>
+      <div class="section-title">Communications Toolkit</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">Ready-to-use templates for every stage of the vendor relationship. Edit all fields in [brackets] before sending. Consistent communication builds vendor trust and reduces confusion.</p>
+
+      <div class="tabs-wrap">
+        <div class="tab-row">
+          <button class="tab-btn active" onclick="switchTab('cm','welcome',this)">Welcome</button>
+          <button class="tab-btn" onclick="switchTab('cm','checkin',this)">Check-in</button>
+          <button class="tab-btn" onclick="switchTab('cm','spotlight',this)">Spotlight</button>
+          <button class="tab-btn" onclick="switchTab('cm','offramp',this)">Transition</button>
+          <button class="tab-btn" onclick="switchTab('cm','social',this)">Social posts</button>
+          <button class="tab-btn" onclick="switchTab('cm','annual',this)">Year-end</button>
+        </div>
+
+        <div class="tab-panel active" id="cm-welcome">
+          <div class="template-label">Welcome email <button class="copy-btn" onclick="copyTpl('cm-welcome-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-welcome-tpl">Subject: Welcome to Pop Shops — City of Bothell!
+
+Hi [Vendor Name],
+
+We're thrilled to welcome you to the Pop Shops Small Business Incubator Program. Your space at [Location/Unit] is ready for you starting [Start Date].
+
+Here's what to expect in your first week:
+- Your welcome kit is inside the space
+- Access details: [Key/Code instructions]
+- Parking: [Parking info]
+- After-hours contact: [Staff Name, Phone]
+
+Your city contact is [Staff Name] at [Email]. Please don't hesitate to reach out with any questions.
+
+We'll check in around the 30-day mark to see how things are going. In the meantime, we'll be promoting your business on the City of Bothell social channels — look out for your feature post!
+
+Welcome to the Bothell business community.
+
+[Staff Name]
+City of Bothell — Economic Development</div>
+        </div>
+
+        <div class="tab-panel" id="cm-checkin">
+          <div class="template-label">30-day check-in email <button class="copy-btn" onclick="copyTpl('cm-checkin-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-checkin-tpl">Subject: Quick check-in — how's your first month going?
+
+Hi [Vendor Name],
+
+It's been about a month since you opened at Pop Shops — we hope it's been a positive start!
+
+We'd love to hear how things are going. A few quick questions:
+
+1. Any operational friction or confusion we can help with?
+2. Are customers finding the space okay?
+3. Any facility or infrastructure concerns?
+4. Is there one thing the city could do to better support you right now?
+
+Feel free to reply to this email or call [Staff Name] at [Phone]. We're also happy to stop by in person if that's easier.
+
+Looking forward to hearing from you!
+
+[Staff Name]
+City of Bothell — Economic Development</div>
+        </div>
+
+        <div class="tab-panel" id="cm-spotlight">
+          <div class="template-label">Vendor spotlight request <button class="copy-btn" onclick="copyTpl('cm-spotlight-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-spotlight-tpl">Subject: We'd love to feature you — Pop Shops spotlight!
+
+Hi [Vendor Name],
+
+We'd love to feature your business in our Pop Shops spotlight series, which reaches our city newsletter subscribers and social media followers.
+
+To get started, could you send us:
+- A short bio about you and your business (2–3 sentences)
+- What you sell and what makes your shop unique
+- Your hours and any upcoming events or promotions
+- 1–2 photos of your space or products
+
+We'll handle the rest! Features typically go live within [X] business days.
+
+This is a great way to reach new customers in the Bothell community. Let us know if you have any questions.
+
+[Staff Name]
+City of Bothell — Economic Development</div>
+        </div>
+
+        <div class="tab-panel" id="cm-offramp">
+          <div class="template-label">18-month transition email <button class="copy-btn" onclick="copyTpl('cm-offramp-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-offramp-tpl">Subject: Planning your next chapter — let's connect
+
+Hi [Vendor Name],
+
+As you approach [X months] in the Pop Shops program, we want to make sure you have everything you need for your next step — whatever that looks like.
+
+We'd love to schedule a 30-minute conversation to talk through:
+- What you've built and learned during your time in Pop Shops
+- Where you're hoping to take the business next
+- How the city can help you get there
+
+Whether you're ready to sign a commercial lease, want to return to online sales with a clearer strategy, or are considering something else entirely — we want to help you land well.
+
+Would [Date/Time Option 1] or [Date/Time Option 2] work for a call or meeting?
+
+[Staff Name]
+City of Bothell — Economic Development</div>
+        </div>
+
+        <div class="tab-panel" id="cm-social">
+          <div class="template-label">Social media post templates <button class="copy-btn" onclick="copyTpl('cm-social-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-social-tpl">--- NEW VENDOR WELCOME ---
+We're excited to welcome [Business Name] to the Pop Shops program! [He/She/They] is now open at [Location]. Stop by to check out [brief description of what they sell]. Supporting local starts here. [Hours] [Link]
+
+--- VENDOR SPOTLIGHT ---
+Meet [Name], the founder of [Business Name] — one of our current Pop Shops vendors. [1–2 sentence story or quote from vendor]. Find them at [Location] during [Hours]. [Photo tag]
+
+--- EVENT ANNOUNCEMENT ---
+Pop Shops is hosting [Event Name] on [Date] at [Time]! Join us at [Location] to [brief description]. All are welcome. See you there!
+
+--- GENERAL PROGRAM PROMO ---
+Did you know the City of Bothell runs a small business incubator called Pop Shops? Local entrepreneurs get a chance to test their concept in a real retail space — right here in Bothell. Learn more: [Link]</div>
+        </div>
+
+        <div class="tab-panel" id="cm-annual">
+          <div class="template-label">Year-end vendor survey invite <button class="copy-btn" onclick="copyTpl('cm-annual-tpl')"><i class="fa-regular fa-copy"></i> Copy</button></div>
+          <div class="template-box" id="cm-annual-tpl">Subject: Help us improve Pop Shops — quick year-end survey
+
+Hi [Vendor Name],
+
+As we wrap up the year, we're taking stock of what's working and what we can do better. Your feedback directly shapes the program for future Bothell entrepreneurs.
+
+This survey takes about 5 minutes:
+[Survey Link]
+
+Thank you for being part of Pop Shops. It's been a privilege to support your business this year.
+
+[Staff Name]
+City of Bothell — Economic Development</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 6 ===== -->
+  <div class="section" id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <div class="section-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <div class="section-title">Annual Program Review</div>
+    </div>
+    <div class="section-body">
+      <p class="section-intro">At the end of each program year, produce an Annual Review Packet. This justifies future funding, supports grant applications, and communicates program impact to City Council and community stakeholders.</p>
+
+      <div class="subsection">
+        <div class="sub-title">Annual review checklist</div>
+        <ul class="checklist">
+          <li><input type="checkbox"> Vendor outcomes summary (how many graduated, pivoted, or exited)</li>
+          <li><input type="checkbox"> Occupancy rate and vacancy trends over the year</li>
+          <li><input type="checkbox"> Aggregate vendor self-reported growth indicators</li>
+          <li><input type="checkbox"> Lessons learned — what worked, what didn't</li>
+          <li><input type="checkbox"> Recommended policy or process changes for next year</li>
+          <li><input type="checkbox"> Economic activation observations (foot traffic, events held, community impact)</li>
+          <li><input type="checkbox"> Staff time and resource usage summary</li>
+          <li><input type="checkbox"> Vendor testimonials collected (at least 2)</li>
+        </ul>
+      </div>
+
+      <div class="subsection">
+        <div class="sub-title">Suggested report sections for City Council</div>
+        <div class="review-row"><span class="review-tag tag-30">Overview</span><span>Program purpose, number of vendors served, and spaces operated this year</span></div>
+        <div class="review-row"><span class="review-tag tag-30">Outcomes</span><span>Vendor trajectory data — graduated, returned to online, pivoted, still active</span></div>
+        <div class="review-row"><span class="review-tag tag-6m">Learnings</span><span>What the program discovered about supporting small businesses in Bothell</span></div>
+        <div class="review-row"><span class="review-tag tag-6m">Community impact</span><span>Events, media mentions, foot traffic data, partner organization engagements</span></div>
+        <div class="review-row"><span class="review-tag tag-18m">Year ahead</span><span>Proposed improvements, resource requests, and recommended policy changes</span></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong>City of Bothell</strong> — Pop Shops Small Business Incubator Program<br>
+  <span style="margin-top:4px; display:block;">Internal Operations Playbook &nbsp;·&nbsp; For staff use only &nbsp;·&nbsp; Economic Development Department</span>
+</footer>
+
+<script>
+  function switchTab(group, id, btn) {
+    document.querySelectorAll('[id^="' + group + '-"]').forEach(el => {
+      el.classList.remove('active');
+    });
+    const panel = document.getElementById(group + '-' + id);
+    if (panel) panel.classList.add('active');
+    if (btn) {
+      btn.closest('.tab-row').querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  }
+
+  function copyTpl(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    navigator.clipboard.writeText(el.textContent).then(() => {
+      const btn = document.querySelector('[onclick="copyTpl(\'' + id + '\')"]');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-check"></i> Copied!';
+        btn.style.color = 'var(--green)';
+        btn.style.borderColor = 'var(--green)';
+        setTimeout(() => {
+          btn.innerHTML = orig;
+          btn.style.color = '';
+          btn.style.borderColor = '';
+        }, 2000);
+      }
+    });
+  }
+</script>
+</body>
+</html>
