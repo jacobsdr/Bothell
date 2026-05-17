@@ -29,22 +29,42 @@
   .ps-math-val { width: 80px; text-align: right; font-size: 13px; color: #1a1a18; font-weight: 500; }
   .ps-math-val.total { color: #0F6E56; font-size: 15px; }
   .ps-math-val.negative { color: #A32D2D; }
+  .ps-cost-list { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-direction: column; gap: 6px; }
+  .ps-cost-list li { font-size: 13px; color: #5f5e5a; display: flex; gap: 8px; line-height: 1.55; }
+  .ps-cost-list li::before { content: "→"; color: #9FE1CB; flex-shrink: 0; font-size: 12px; margin-top: 1px; }
+  .ps-track-options { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+  .ps-track-option { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; padding: 16px 18px; }
+  .ps-track-option-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.07em; color: #1D9E75; font-weight: 500; margin-bottom: 6px; }
+  .ps-track-option-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 6px; }
+  .ps-track-option-text { font-size: 12px; color: #5f5e5a; line-height: 1.55; }
   .ps-rule-list { list-style: none; padding: 0; margin: 0 0 32px; display: flex; flex-direction: column; gap: 10px; }
   .ps-rule-item { display: flex; gap: 14px; align-items: flex-start; }
   .ps-rule-num { width: 26px; height: 26px; border-radius: 50%; background: #E1F5EE; color: #0F6E56; font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .ps-rule-text { font-size: 15px; color: #2c2c2a; line-height: 1.6; }
   .ps-rule-text strong { font-weight: 500; color: #1a1a18; }
+  .ps-concession { background: #FAEEDA; border-radius: 12px; padding: 18px 22px; margin-bottom: 32px; }
+  .ps-concession-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #633806; font-weight: 500; margin: 0 0 6px; }
+  .ps-concession-text { font-size: 14px; color: #412402; line-height: 1.65; margin: 0 0 8px; }
+  .ps-concession-example { font-size: 13px; color: #633806; background: rgba(255,255,255,0.5); border-radius: 6px; padding: 8px 12px; display: block; font-style: italic; }
   .ps-resources { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; }
   .ps-resource { background: #fff; border: 1px solid #e8e6e0; border-radius: 10px; padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; text-decoration: none; color: inherit; transition: border-color 0.15s; }
   .ps-resource:hover { border-color: #1D9E75; }
   .ps-resource-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 3px; }
   .ps-resource-desc { font-size: 12px; color: #888780; margin: 0; }
   .ps-resource-link { font-size: 12px; color: #0F6E56; white-space: nowrap; flex-shrink: 0; }
+  .ps-monthly { background: #fafaf8; border: 1px solid #e8e6e0; border-radius: 12px; padding: 20px 22px; margin-bottom: 32px; }
+  .ps-monthly-title { font-size: 14px; font-weight: 500; color: #1a1a18; margin: 0 0 12px; }
+  .ps-monthly-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+  .ps-monthly-list li { font-size: 13px; color: #5f5e5a; line-height: 1.55; display: flex; gap: 10px; }
+  .ps-monthly-list li::before { content: ""; width: 16px; height: 16px; border: 1.5px solid #9FE1CB; border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
   .ps-warning { background: #FAEEDA; border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; }
   .ps-warning-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #633806; font-weight: 500; margin: 0 0 6px; }
   .ps-warning-text { font-size: 14px; color: #412402; line-height: 1.6; margin: 0; }
   .ps-divider { height: 1px; background: #e8e6e0; margin: 32px 0; }
-  @media (max-width: 540px) { .ps-title { font-size: 26px; } }
+  @media (max-width: 540px) {
+    .ps-track-options { grid-template-columns: 1fr; }
+    .ps-title { font-size: 26px; }
+  }
 </style>
 
 <div class="ps-wrap">
@@ -56,60 +76,71 @@
   <div class="ps-hero">
     <div class="ps-tag">Money basics</div>
     <h1 class="ps-title">Know if you're actually making money — and stay out of trouble</h1>
-    <p class="ps-sub">You don't need accounting software or a business degree. You need three things: a way to track what's coming in and going out, a separate bank account, and a basic understanding of Washington's rules for retail sellers.</p>
+    <p class="ps-sub">This section isn't about becoming an accountant. It's about making sure that two years from now, you actually know whether your Pop Shop made you money — and that you're not in trouble with the IRS because you mixed your business income with your grocery budget.</p>
   </div>
 
   <div class="ps-callout">
     <p class="ps-callout-label">The one rule that matters most</p>
-    <p class="ps-callout-text">Keep your business money completely separate from your personal money — from day one. This single habit makes everything else easier: tracking profit, filing taxes, applying for loans, and proving your business is real. It costs nothing to open a second checking account and it saves you enormous headaches later.</p>
+    <p class="ps-callout-text">Keep your business money completely separate from your personal money — from day one. Open a free business checking account this week. Move all business income into it. Pay all business expenses from it. That single habit makes everything else easier: tracking profit, filing taxes, applying for a loan, and proving your business is real.</p>
   </div>
 
   <p class="ps-section-label">Three concepts worth understanding</p>
   <div class="ps-concept-list">
     <div class="ps-concept">
       <p class="ps-concept-title">Revenue vs. profit — they are not the same thing</p>
-      <p class="ps-concept-text">Revenue is every dollar that comes in. Profit is what's left after you subtract everything it cost to make and sell your product — materials, fees, packaging, your time. Many first-time vendors look at their weekend sales total and feel good, without accounting for what they spent. Profit is the number that actually matters.</p>
-      <span class="ps-concept-example">Revenue ($320 weekend sales) − Costs ($140 materials + $30 fees) = Profit ($150)</span>
+      <p class="ps-concept-text">Revenue is every dollar that comes in. Profit is what's left after you subtract everything it cost to make and sell your product. Many first-time vendors look at their weekend sales total and feel good, without accounting for materials, time, fees, and the city's concession. Profit is the number that actually matters.</p>
+      <span class="ps-concept-example">Revenue ($320) − Materials ($96) − Fees ($18) − Your time ($80) − Concession ($32) = Profit ($94)</span>
     </div>
     <div class="ps-concept">
       <p class="ps-concept-title">Cost of goods — what it actually costs to make one item</p>
-      <p class="ps-concept-text">Before you can price anything confidently, you need to know what it costs to produce one unit — materials, packaging, and a fair estimate of your own labor time. If you don't know your cost of goods, you might be pricing at a loss without realizing it.</p>
-      <span class="ps-concept-example">Materials ($8) + Packaging ($1.50) + 20 min labor at $20/hr ($6.67) = Cost of goods ($16.17)</span>
+      <p class="ps-concept-text">Before you can price anything confidently, you need to know your cost to produce one unit — materials, packaging, and a fair estimate of your own time. A simple starting point: materials cost × 3 = minimum retail price. If your materials cost $8, don't sell for $12. Run the full number first.</p>
+      <span class="ps-concept-example">Materials ($8) + Packaging ($1.50) + 20 min labor at $20/hr ($6.67) = Cost of goods ($16.17) → Minimum price ~$48</span>
     </div>
     <div class="ps-concept">
-      <p class="ps-concept-title">Margin — how much you keep on each sale</p>
-      <p class="ps-concept-text">Margin is the percentage of a sale price that is profit. A healthy retail margin for handmade goods is typically 50–70%. If your cost of goods is $16 and you sell for $40, your margin is 60% — meaning you keep $24 of every $40 sale. Knowing your margin tells you how many units you need to sell to cover your costs each weekend.</p>
-      <span class="ps-concept-example">($40 price − $16 cost) ÷ $40 price = 60% margin</span>
+      <p class="ps-concept-title">The 10% city concession</p>
+      <p class="ps-concept-text">10% of your monthly on-site revenue goes to the city as your concession — this is effectively your rent. It's percentage-based, which is a benefit when you're starting out (low sales = low rent), but it needs to be factored into your profit calculation from day one.</p>
+      <span class="ps-concept-example">$1,500 in on-site sales → $150 concession to the city that month</span>
     </div>
   </div>
+
+  <p class="ps-section-label">What counts as a cost</p>
+  <ul class="ps-cost-list" style="margin-bottom:32px;">
+    <li>Materials and supplies to make your product</li>
+    <li>Packaging (bags, boxes, tissue paper, labels)</li>
+    <li>Payment processing fees (Square charges ~2.6% per swipe)</li>
+    <li>Pop Shop concession: 10% of monthly on-site revenue to the city</li>
+    <li>Display equipment, props, and signage you purchased</li>
+    <li>Your time — even if you don't pay yourself yet, track the hours</li>
+    <li>Certificate of Insurance (required — typically $300–$600/year)</li>
+  </ul>
 
   <p class="ps-section-label">A simple weekend profit check</p>
   <div class="ps-math-box">
     <div class="ps-math-head"><p class="ps-math-head-title">Example: one weekend's real picture</p></div>
-    <div class="ps-math-row">
-      <p class="ps-math-label">Total sales (revenue)</p>
-      <p class="ps-math-op"></p>
-      <p class="ps-math-val">$320</p>
+    <div class="ps-math-row"><p class="ps-math-label">Total sales (revenue)</p><p class="ps-math-op"></p><p class="ps-math-val">$320</p></div>
+    <div class="ps-math-row"><p class="ps-math-label">Cost of goods sold</p><p class="ps-math-op">−</p><p class="ps-math-val negative">$96</p></div>
+    <div class="ps-math-row"><p class="ps-math-label">Packaging and supplies used</p><p class="ps-math-op">−</p><p class="ps-math-val negative">$18</p></div>
+    <div class="ps-math-row"><p class="ps-math-label">City concession (10% of $320)</p><p class="ps-math-op">−</p><p class="ps-math-val negative">$32</p></div>
+    <div class="ps-math-row"><p class="ps-math-label">Your time (8 hrs at your rate)</p><p class="ps-math-op">−</p><p class="ps-math-val negative">$80</p></div>
+    <div class="ps-math-row total"><p class="ps-math-label total">Real profit this weekend</p><p class="ps-math-op"></p><p class="ps-math-val total">$94</p></div>
+  </div>
+
+  <p class="ps-section-label">Three ways to track — pick one and actually use it</p>
+  <div class="ps-track-options">
+    <div class="ps-track-option">
+      <p class="ps-track-option-label">Option A</p>
+      <p class="ps-track-option-title">Google Sheet</p>
+      <p class="ps-track-option-text">Free and flexible. Three columns: Date, Amount (positive for income, negative for expenses), Description. Update every Sunday. Takes 5 minutes.</p>
     </div>
-    <div class="ps-math-row">
-      <p class="ps-math-label">Cost of goods sold (materials for items sold)</p>
-      <p class="ps-math-op">−</p>
-      <p class="ps-math-val negative">$96</p>
+    <div class="ps-track-option">
+      <p class="ps-track-option-label">Option B</p>
+      <p class="ps-track-option-title">Wave (free app)</p>
+      <p class="ps-track-option-text">Connects to your bank, categorizes automatically, and generates profit/loss reports — useful for loan or lease applications. Free at waveapps.com.</p>
     </div>
-    <div class="ps-math-row">
-      <p class="ps-math-label">Packaging and supplies used</p>
-      <p class="ps-math-op">−</p>
-      <p class="ps-math-val negative">$18</p>
-    </div>
-    <div class="ps-math-row">
-      <p class="ps-math-label">Your time (8 hrs at whatever you value it)</p>
-      <p class="ps-math-op">−</p>
-      <p class="ps-math-val negative">$80</p>
-    </div>
-    <div class="ps-math-row total">
-      <p class="ps-math-label total">Real profit this weekend</p>
-      <p class="ps-math-op"></p>
-      <p class="ps-math-val total">$126</p>
+    <div class="ps-track-option">
+      <p class="ps-track-option-label">Option C</p>
+      <p class="ps-track-option-title">Square Dashboard</p>
+      <p class="ps-track-option-text">If you use Square, the free Dashboard tracks sales by day, item, and category. Pair with a simple expense log for the full picture.</p>
     </div>
   </div>
 
@@ -117,57 +148,67 @@
   <ul class="ps-rule-list">
     <li class="ps-rule-item">
       <div class="ps-rule-num">1</div>
-      <p class="ps-rule-text"><strong>You likely need a Washington State business license.</strong> If you're selling goods and making more than $12,000 per year, a state business license is required. It costs $90 for two years and takes about 10 minutes online. If you're below that threshold it's still worth getting — it makes you look credible and is required if you ever want a business bank account.</p>
+      <p class="ps-rule-text"><strong>Washington State Business License.</strong> Required for any business operating in Washington. Apply at dor.wa.gov. Cost: $19 initial fee, $9–$71 per year depending on revenue. Takes about 10 minutes online.</p>
     </li>
     <li class="ps-rule-item">
       <div class="ps-rule-num">2</div>
-      <p class="ps-rule-text"><strong>You are required to collect and remit sales tax on retail sales in Washington.</strong> Washington's state sales tax is 6.5%, plus a local rate for Bothell (currently around 3.6% — verify at dor.wa.gov). You collect it from customers at the point of sale and send it to the state quarterly. Your payment processor (Square, Venmo, etc.) can often handle the calculation automatically.</p>
+      <p class="ps-rule-text"><strong>City of Bothell endorsement.</strong> Required separately from the state license. Apply through the same Washington DOR portal under "city endorsements" — search for Bothell.</p>
     </li>
     <li class="ps-rule-item">
       <div class="ps-rule-num">3</div>
-      <p class="ps-rule-text"><strong>Keep receipts for everything you buy for the business.</strong> Materials, packaging, display supplies, printing — these are all business expenses that reduce your taxable income. A simple folder (physical or in Google Drive) of receipts is all you need to start.</p>
+      <p class="ps-rule-text"><strong>Certificate of Insurance.</strong> Required by the Pop Shops program, naming the City of Bothell as certificate holder. Basic general liability typically costs $300–$600/year. Get this before your first day.</p>
     </li>
     <li class="ps-rule-item">
       <div class="ps-rule-num">4</div>
-      <p class="ps-rule-text"><strong>You don't need to form an LLC right away.</strong> Many small vendors operate as a sole proprietor (just yourself, under your own name or a trade name) to start. It's simpler and costs nothing. An LLC becomes worth considering once you have consistent revenue and want liability protection — but it's not the first step.</p>
+      <p class="ps-rule-text"><strong>Sales tax.</strong> Bothell's combined sales tax rate is 10.6% (verify at dor.wa.gov — rates can change). Configure Square to add this automatically before your first day. The money you collect is not yours — file and remit it quarterly to the state.</p>
+    </li>
+    <li class="ps-rule-item">
+      <div class="ps-rule-num">5</div>
+      <p class="ps-rule-text"><strong>Keep receipts for everything.</strong> Materials, packaging, display supplies, printing — these are business expenses that reduce your taxable income. A folder in Google Drive is enough to start.</p>
     </li>
   </ul>
 
   <div class="ps-warning">
-    <p class="ps-warning-label">Common mistake</p>
-    <p class="ps-warning-text">Spending your sales tax money before you remit it to the state. Sales tax collected from customers is not your money — it belongs to the state. A simple habit: every time you make a sale, mentally set aside 10% of it in your business account for tax. You'll never be caught short at filing time.</p>
+    <p class="ps-warning-label">Common mistake — spending your sales tax</p>
+    <p class="ps-warning-text">Sales tax collected from customers is not your money — it belongs to the state. Every time you make a sale, mentally set aside 10.6% of it in your business account. You'll never be caught short at filing time.</p>
+  </div>
+
+  <p class="ps-section-label">Monthly money check-in — 20 minutes, once a month</p>
+  <div class="ps-monthly">
+    <p class="ps-monthly-title">Ask yourself these questions every month</p>
+    <ul class="ps-monthly-list">
+      <li>What was my total on-site Pop Shop revenue this month?</li>
+      <li>What did I spend on materials and supplies?</li>
+      <li>What were my payment processing fees?</li>
+      <li>What is my 10% concession amount owed to the city?</li>
+      <li>What was my actual profit (revenue minus all of the above)?</li>
+      <li>Am I pricing high enough to make the profit I need?</li>
+      <li>Is there one product I should stop making because it doesn't cover its costs?</li>
+    </ul>
   </div>
 
   <div class="ps-divider"></div>
 
-  <p class="ps-section-label">Free tools to get started</p>
+  <p class="ps-section-label">Free resources</p>
   <div class="ps-resources">
+    <a class="ps-resource" href="https://dor.wa.gov/open-business/apply-business-license">
+      <div><p class="ps-resource-title">Washington Business Licensing Service</p><p class="ps-resource-desc">Apply for your state business license and Bothell city endorsement — about 10 minutes</p></div>
+      <span class="ps-resource-link">Visit →</span>
+    </a>
     <a class="ps-resource" href="https://dor.wa.gov/taxes-rates/sales-and-use-tax-rates">
-      <div>
-        <p class="ps-resource-title">WA Dept. of Revenue — Sales Tax Rates</p>
-        <p class="ps-resource-desc">Find the exact combined rate for Bothell and file your quarterly returns here</p>
-      </div>
+      <div><p class="ps-resource-title">WA Dept. of Revenue — Sales Tax Rates</p><p class="ps-resource-desc">Verify the current Bothell rate and file your quarterly returns here</p></div>
       <span class="ps-resource-link">Visit →</span>
     </a>
-    <a class="ps-resource" href="https://secure.dol.wa.gov/business/businesslicenseexpress/">
-      <div>
-        <p class="ps-resource-title">Washington Business Licensing Service</p>
-        <p class="ps-resource-desc">Apply for your state business license online — takes about 10 minutes</p>
-      </div>
+    <a class="ps-resource" href="https://www.waveapps.com">
+      <div><p class="ps-resource-title">Wave — free accounting software</p><p class="ps-resource-desc">Free invoicing, expense tracking, and profit/loss reports — no subscription needed</p></div>
       <span class="ps-resource-link">Visit →</span>
     </a>
-    <a class="ps-resource" href="https://www.wave.com">
-      <div>
-        <p class="ps-resource-title">Wave — free accounting software</p>
-        <p class="ps-resource-desc">Free invoicing, expense tracking, and basic reporting — no subscription needed</p>
-      </div>
+    <a class="ps-resource" href="https://wsbdc.org/contact-an-advisor">
+      <div><p class="ps-resource-title">WA Small Business Development Center</p><p class="ps-resource-desc">Free one-on-one advising on pricing, taxes, and financial planning</p></div>
       <span class="ps-resource-link">Visit →</span>
     </a>
-    <a class="ps-resource" href="https://wsbdc.org">
-      <div>
-        <p class="ps-resource-title">WA Small Business Development Center</p>
-        <p class="ps-resource-desc">Free one-on-one advising on pricing, taxes, and financial planning</p>
-      </div>
+    <a class="ps-resource" href="https://www.score.org">
+      <div><p class="ps-resource-title">SCORE</p><p class="ps-resource-desc">Free mentorship from retired executives — good for financial and business planning questions</p></div>
       <span class="ps-resource-link">Visit →</span>
     </a>
   </div>
