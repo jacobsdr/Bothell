@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upcoming Events — Pop Shops on Main</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #f7f9f7; color: #1a1a18; }
+
+  /* NAV */
+  nav { background: #0F3D2E; height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .nav-logo-img { height: 34px; width: auto; }
+  .nav-name { font-family: 'Lora', serif; font-size: 15px; font-weight: 600; color: #fff; }
+  .nav-city { font-size: 12px; color: rgba(255,255,255,0.55); }
+  .nav-back { font-size: 13px; color: #9FE1CB; text-decoration: none; display: flex; align-items: center; gap: 5px; }
+  .nav-back:hover { color: #fff; }
+
+  /* PAGE HERO */
+  .page-hero { background: #0F3D2E; padding: 2rem 2rem 1.75rem; }
+  .page-hero-inner { max-width: 860px; margin: 0 auto; }
+  .page-eyebrow { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: #9FE1CB; font-weight: 500; margin-bottom: 10px; }
+  .page-title { font-family: 'Lora', serif; font-size: 2rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
+  .page-sub { font-size: 15px; color: rgba(255,255,255,0.75); line-height: 1.65; max-width: 500px; }
+
+  /* MAIN */
+  main { max-width: 860px; margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+
+  /* MONTH HEADER */
+  .month-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+  .month-title { font-family: 'Lora', serif; font-size: 1.5rem; font-weight: 600; color: #0F3D2E; }
+  .month-nav { display: flex; gap: 8px; }
+  .month-btn { background: #fff; border: 1px solid #e8e6e0; border-radius: 6px; padding: 6px 14px; font-size: 13px; color: #5f5e5a; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .month-btn:hover { border-color: #1D9E75; color: #1D9E75; }
+
+  /* CALENDAR GRID */
+  .cal-wrap { background: #fff; border: 1px solid #e8e6e0; border-radius: 12px; overflow: hidden; margin-bottom: 2.5rem; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+  .cal-day-head { background: #0F3D2E; color: #9FE1CB; font-size: 11px; font-weight: 500; text-align: center; padding: 10px 0; letter-spacing: 0.05em; }
+  .cal-cell { border-right: 1px solid #f0ede8; border-bottom: 1px solid #f0ede8; min-height: 88px; padding: 6px; position: relative; vertical-align: top; }
+  .cal-cell:nth-child(7n) { border-right: none; }
+  .cal-cell.empty { background: #fafaf9; }
+  .cal-cell.today { background: #f0faf6; }
+  .cal-num { font-size: 12px; font-weight: 500; color: #888780; margin-bottom: 4px; }
+  .cal-cell.today .cal-num { color: #0F3D2E; font-weight: 700; }
+
+  /* EVENT PILLS */
+  .evt { font-size: 10px; font-weight: 500; border-radius: 4px; padding: 2px 5px; margin-bottom: 2px; display: block; line-height: 1.4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .evt-market  { background: #E1F5EE; color: #085041; }
+  .evt-truck   { background: #FFF3DC; color: #7A4F00; }
+  .evt-city    { background: #E8F0FE; color: #1A56A0; }
+  .evt-program { background: #F3E8FF; color: #5B21A0; }
+
+  /* EVENT LIST */
+  .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #888780; font-weight: 500; margin-bottom: 14px; }
+  .evt-list { display: flex; flex-direction: column; gap: 10px; }
+  .evt-card { background: #fff; border: 1px solid #e8e6e0; border-radius: 10px; padding: 14px 18px; display: flex; gap: 16px; align-items: flex-start; }
+  .evt-card:hover { border-color: #1D9E75; }
+  .evt-date-badge { flex-shrink: 0; width: 48px; text-align: center; }
+  .evt-month { font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.07em; color: #888780; }
+  .evt-day-num { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 600; color: #0F3D2E; line-height: 1; }
+  .evt-divider { width: 1px; background: #e8e6e0; align-self: stretch; flex-shrink: 0; }
+  .evt-info { flex: 1; }
+  .evt-name { font-size: 14px; font-weight: 500; color: #1a1a18; margin-bottom: 3px; }
+  .evt-meta { font-size: 12px; color: #888780; margin-bottom: 5px; }
+  .evt-desc { font-size: 13px; color: #5f5e5a; line-height: 1.55; }
+  .evt-tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; margin-top: 6px; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: #5f5e5a; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+  /* FOOTER */
+  .note-box { background: #f7f9f7; border: 1px solid #e8e6e0; border-radius: 10px; padding: 14px 18px; margin-top: 2rem; }
+  .note-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: #1D9E75; font-weight: 500; margin-bottom: 5px; }
+  .note-text { font-size: 13px; color: #5f5e5a; line-height: 1.6; }
+
+  footer { background: #0F3D2E; margin-top: 4rem; }
+  .footer-inner { max-width: 860px; margin: 0 auto; padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  .footer-name { font-family: 'Lora', serif; font-size: 14px; font-weight: 600; color: #fff; }
+  .footer-sub { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+  .footer-link { font-size: 12px; color: #9FE1CB; text-decoration: none; }
+
+  @media (max-width: 600px) {
+    .cal-cell { min-height: 60px; padding: 4px; }
+    .evt { font-size: 9px; }
+    .cal-num { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">
+    <img class="nav-logo-img" src="logo.png" alt="Pop Shops on Main">
+    <span class="nav-name">Pop Shops on Main</span>
+  </a>
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to guide
+  </a>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <p class="page-eyebrow">City of Bothell · Pop Shops on Main</p>
+    <h1 class="page-title">Upcoming Events</h1>
+    <p class="page-sub">Market days, food truck activations, city events, and program milestones. Knowing what's happening nearby helps you plan your weekends and drive more traffic to your space.</p>
+  </div>
+</div>
+
+<main>
+
+  <div class="month-header">
+    <p class="month-title">June 2026</p>
+    <div class="month-nav">
+      <button class="month-btn">← May</button>
+      <button class="month-btn">July →</button>
+    </div>
+  </div>
+
+  <!-- LEGEND -->
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#1D9E75;"></div>Market Day</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#F59E0B;"></div>Food Truck</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#3B82F6;"></div>City Event</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8B5CF6;"></div>Program</div>
+  </div>
+
+  <!-- CALENDAR -->
+  <div class="cal-wrap">
+    <div class="cal-grid">
+      <!-- Day headers -->
+      <div class="cal-day-head">Sun</div>
+      <div class="cal-day-head">Mon</div>
+      <div class="cal-day-head">Tue</div>
+      <div class="cal-day-head">Wed</div>
+      <div class="cal-day-head">Thu</div>
+      <div class="cal-day-head">Fri</div>
+      <div class="cal-day-head">Sat</div>
+
+      <!-- Week 1: June starts on Monday -->
+      <div class="cal-cell empty"></div>
+      <div class="cal-cell"><p class="cal-num">1</p></div>
+      <div class="cal-cell"><p class="cal-num">2</p></div>
+      <div class="cal-cell"><p class="cal-num">3</p></div>
+      <div class="cal-cell"><p class="cal-num">4</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">5</p>
+        <span class="evt evt-truck">Food Truck: Noon</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">6</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-city">Farmers Market</span>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="cal-cell"><p class="cal-num">7</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">8</p></div>
+      <div class="cal-cell"><p class="cal-num">9</p></div>
+      <div class="cal-cell"><p class="cal-num">10</p></div>
+      <div class="cal-cell"><p class="cal-num">11</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-program">Vendor Check-In</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">12</p>
+        <span class="evt evt-truck">Food Truck: Noon</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">13</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-city">Farmers Market</span>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="cal-cell"><p class="cal-num">14</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">15</p></div>
+      <div class="cal-cell"><p class="cal-num">16</p></div>
+      <div class="cal-cell"><p class="cal-num">17</p></div>
+      <div class="cal-cell"><p class="cal-num">18</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">19</p>
+        <span class="evt evt-truck">Food Truck: Noon</span>
+        <span class="evt evt-city">Summer Kick-Off</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">20</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-city">Farmers Market</span>
+        <span class="evt evt-city">Summer Kick-Off</span>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="cal-cell"><p class="cal-num">21</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-city">Summer Solstice</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">22</p></div>
+      <div class="cal-cell"><p class="cal-num">23</p></div>
+      <div class="cal-cell"><p class="cal-num">24</p></div>
+      <div class="cal-cell"><p class="cal-num">25</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-program">Photo Day</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">26</p>
+        <span class="evt evt-truck">Food Truck: Noon</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">27</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+        <span class="evt evt-city">Farmers Market</span>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="cal-cell"><p class="cal-num">28</p>
+        <span class="evt evt-market">Pop Shops Open</span>
+      </div>
+      <div class="cal-cell"><p class="cal-num">29</p></div>
+      <div class="cal-cell"><p class="cal-num">30</p></div>
+      <div class="cal-cell empty"></div>
+      <div class="cal-cell empty"></div>
+      <div class="cal-cell empty"></div>
+      <div class="cal-cell empty"></div>
+    </div>
+  </div>
+
+  <!-- EVENT LIST -->
+  <p class="section-label">June events — full details</p>
+  <div class="evt-list">
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">4–7</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Pop Shops on Main — Opening Weekend</p>
+        <p class="evt-meta">Thu–Sun · Noon to 6:00 PM · Main Street, Downtown Bothell</p>
+        <p class="evt-desc">Regular operating weekend. Expect moderate foot traffic from nearby Farmers Market on Saturday. Good weekend to post your opening announcement if you haven't already.</p>
+        <span class="evt-tag evt-market">Market Day</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">5</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Food Truck Activation</p>
+        <p class="evt-meta">Friday · Noon to 3:00 PM · Pop Shops Lot</p>
+        <p class="evt-desc">Rotating food truck in the shared open space. Brings additional lunchtime foot traffic through the lot. Post on social Thursday evening to capture people planning their lunch.</p>
+        <span class="evt-tag evt-truck">Food Truck</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">6</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Bothell Saturday Farmers Market</p>
+        <p class="evt-meta">Saturday · 9:00 AM to 2:00 PM · Sammamish River Trail area</p>
+        <p class="evt-desc">Weekly Farmers Market draws significant foot traffic to the area. One of your highest-traffic Saturdays. Make sure your space is fully set up by 10:00 AM and your exterior chalkboard is out.</p>
+        <span class="evt-tag evt-city">City Event</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">11</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Vendor Check-In — Program Coordinator</p>
+        <p class="evt-meta">Thursday · During open hours · Your unit</p>
+        <p class="evt-desc">Monthly informal check-in with the Pop Shops coordinator. Good time to flag any space issues, ask questions, or share what's been working. Not mandatory but encouraged — especially for newer vendors.</p>
+        <span class="evt-tag evt-program">Program</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">19–20</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Downtown Bothell Summer Kick-Off</p>
+        <p class="evt-meta">Fri–Sat · Downtown Bothell</p>
+        <p class="evt-desc">City-organized event welcoming the start of summer in downtown Bothell. Historically one of the highest-traffic weekends of the year for the Pop Shops lot. Plan extra inventory, make sure your space is refreshed, and promote heavily on social Wednesday–Friday.</p>
+        <span class="evt-tag evt-city">City Event</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">21</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Summer Solstice</p>
+        <p class="evt-meta">Sunday · All day</p>
+        <p class="evt-desc">Longest day of the year — great content hook for social posts. "Summer officially starts and so does our busiest season" is a natural post for Instagram or Facebook. Good day for a display refresh to mark the season change.</p>
+        <span class="evt-tag evt-city">City Event</span>
+      </div>
+    </div>
+
+    <div class="evt-card">
+      <div class="evt-date-badge">
+        <p class="evt-month">Jun</p>
+        <p class="evt-day-num">25</p>
+      </div>
+      <div class="evt-divider"></div>
+      <div class="evt-info">
+        <p class="evt-name">Pop Shops Photo Day</p>
+        <p class="evt-meta">Thursday · During open hours · All units</p>
+        <p class="evt-desc">The city will be taking photos of the Pop Shops area for use on the city website and social channels. Make sure your space looks its best — clean display, hero product prominent, exterior signage out. The city may tag you in posts afterward.</p>
+        <span class="evt-tag evt-program">Program</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="note-box">
+    <p class="note-label">A note on this calendar</p>
+    <p class="note-text">This is a prototype calendar for the Pop Shops onboarding guide. In the live version, this page would be maintained by the city coordinator and updated monthly. Vendors would receive an email notification when new events are added. If you know of an event not listed here, contact <strong>business@bothellwa.gov</strong>.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-name">Pop Shops on Main</div>
+      <div class="footer-sub">City of Bothell, WA · Prototype v1</div>
+    </div>
+    <a class="footer-link" href="https://www.bothellwa.gov/1945/Pop-Shops-on-Main">bothellwa.gov ↗</a>
+  </div>
+</footer>
+
+</body>
+</html>
